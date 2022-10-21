@@ -1,0 +1,21 @@
+<root presetname="cricket_roto" tasktype="hiero.exporters.FnShotProcessor.ShotProcessor">
+    <startFrameIndex valuetype="int">1001</startFrameIndex>
+    <exportRoot valuetype="str">{projectroot}</exportRoot>
+    <versionIndex valuetype="int">1</versionIndex>
+    <cutUseHandles valuetype="bool">False</cutUseHandles>
+    <versionPadding valuetype="int">3</versionPadding>
+    <exportTemplate valuetype="list">
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">sequences/{sequence}/{shot}/roto/output/{version}/{track}/{filename}</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnCopyExporter.CopyPreset">
+                <root presetname="hiero.exporters.FnCopyExporter.CopyExporter" tasktype="hiero.exporters.FnCopyExporter.CopyExporter" />
+            </SequenceItem>
+        </SequenceItem>
+    </exportTemplate>
+    <excludeTags valuetype="list" />
+    <includeTags valuetype="list" />
+    <includeRetimes valuetype="bool">False</includeRetimes>
+    <startFrameSource valuetype="str">Custom</startFrameSource>
+    <cutLength valuetype="bool">True</cutLength>
+    <cutHandles valuetype="int">1</cutHandles>
+</root>

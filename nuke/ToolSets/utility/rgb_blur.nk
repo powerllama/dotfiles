@@ -1,0 +1,156 @@
+#! W:/Temp/psyop_cache/apps/nuke/win64/11.1v2/nuke-11.1.2.dll -nx
+version 11.1 v2
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-8" y="-8" w="1920" h="1147" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="42"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1874" stretch="1"/>
+            <splitter orientation="2">
+                <split size="0"/>
+                <dock id=""/>
+                <split size="1099"/>
+                <splitter orientation="1">
+                    <split size="1334"/>
+                    <dock id="" activePageId="DAG.1" focus="true">
+                        <page id="DAG.1"/>
+                        <page id="Curve Editor.1"/>
+                        <page id="DopeSheet.1"/>
+                    </dock>
+                    <split size="536"/>
+                    <dock id="" activePageId="Properties.1">
+                        <page id="Properties.1"/>
+                        <page id="Pixel Analyzer.1"/>
+                        <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                    </dock>
+                </splitter>
+            </splitter>
+        </splitter>
+    </window>
+    <window x="1920" y="0" w="1920" h="1177" maximized="1" screen="1">
+        <splitter orientation="1">
+            <split size="1920"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name Z:/.nuke/ToolSets/utility/rgb_blur.nk
+ colorManagement OCIO
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT linear
+ monitorLut Comp/sRGB
+ int8Lut srgb
+ int16Lut srgb
+ logLut camera
+ floatLut linear
+ addUserKnob {20 psycolor_tab l Psycolor}
+ addUserKnob {6 ocio_viewer_use_metadata l "OCIO Viewer Use Metadata" -STARTLINE}
+ ocio_viewer_use_metadata true
+ addUserKnob {6 viewer_overlay l "Show Viewer Overlay" -STARTLINE}
+ viewer_overlay true
+ addUserKnob {1 viewer_look l "Viewer Look"}
+ viewer_look tonemap
+ addUserKnob {2 entity_path_override l "Entity Path Override"}
+ addUserKnob {1 ocio_context_key_1 l key1}
+ ocio_context_key_1 PSYCOLOR_COLOR_SETUP_LOOKS_CURRENT_REL
+ addUserKnob {1 ocio_context_value_1 l value1 -STARTLINE}
+ addUserKnob {1 ocio_context_key_2 l key2}
+ ocio_context_key_2 PSYCOLOR_SHOT_LOOKS_CURRENT_REL
+ addUserKnob {1 ocio_context_value_2 l value2 -STARTLINE}
+ ocio_context_value_2 ../../../../../sequences/act1/lc0290/editorial/output/ocio/editorial_ocio/v000
+ addUserKnob {1 ocio_context_key_3 l key3}
+ ocio_context_key_3 PSYCOLOR_ASSET_LOOKS_CURRENT_REL
+ addUserKnob {1 ocio_context_value_3 l value3 -STARTLINE}
+ addUserKnob {1 ocio_context_key_4 l key4}
+ ocio_context_key_4 PSYCOLOR_PROJECT_LOOKS_CURRENT_REL
+ addUserKnob {1 ocio_context_value_4 l value4 -STARTLINE}
+ ocio_context_value_4 ../../../config/color/ocio-psycolor/looks/project/clashshortfilm_33294P/v000
+ addUserKnob {22 ocio_context_refresh l "Refresh Context" T psycolor_auto_knob() +STARTLINE}
+}
+Group {
+ inputs 0
+ name rgb_blur
+ xpos -234
+ ypos 27
+ addUserKnob {20 User}
+ addUserKnob {41 redblur l "red blur" T red_blur.size}
+ addUserKnob {41 greenblur l "green blur" T green_blur.size}
+ addUserKnob {41 blueblur l "blue blur" T blue_blur.size}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos -87
+  ypos -199
+  number 1
+ }
+ Dot {
+  name Dot1
+  xpos -53
+  ypos -145
+ }
+set N8170b500 [stack 0]
+ Dot {
+  name Dot2
+  xpos -53
+  ypos -93
+ }
+set N8170b180 [stack 0]
+ Dot {
+  name Dot3
+  xpos -53
+  ypos -41
+ }
+push $N8170b180
+push $N8170b500
+ Input {
+  inputs 0
+  name Input1
+  xpos -264
+  ypos -195
+ }
+ Blur {
+  inputs 1+1
+  channels {rgba.red -rgba.green -rgba.blue none}
+  size 1
+  name red_blur
+  tile_color 0xff5555ff
+  label "size: \[value size]"
+  xpos -264
+  ypos -155
+ }
+ Blur {
+  inputs 1+1
+  channels {-rgba.red rgba.green -rgba.blue none}
+  size 2
+  name green_blur
+  tile_color 0x6aff55ff
+  label "size: \[value size]"
+  xpos -264
+  ypos -103
+ }
+ Blur {
+  inputs 1+1
+  channels {-rgba.red -rgba.green rgba.blue none}
+  size 4
+  name blue_blur
+  tile_color 0x557fffff
+  label "size: \[value size]"
+  xpos -264
+  ypos -51
+ }
+ Output {
+  name Output1
+  xpos -264
+  ypos 49
+ }
+end_group

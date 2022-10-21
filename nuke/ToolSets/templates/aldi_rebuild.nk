@@ -1,0 +1,1284 @@
+Group {
+ name aldi_rebuild
+ label "\[lindex \[split \[lindex \[split \[value input0.file] /] end] .] 0]"
+ selected true
+ xpos -1969
+ ypos 149
+ addUserKnob {20 rebuild}
+ addUserKnob {22 match l matchAovs T "import psynuke_custom.aldi_rebuild\nreload(psynuke_custom.aldi_rebuild)\npsynuke_custom.aldi_rebuild.match_aov()" +STARTLINE}
+ addUserKnob {6 beauty l "beauty passthrough" +STARTLINE}
+ addUserKnob {20 info l assets}
+ addUserKnob {22 addAssetGizmos -STARTLINE T "import psynuke_custom.aldi_rebuild\nreload(psynuke_custom.aldi_rebuild)\npsynuke_custom.aldi_rebuild.add_asset_gizmos()"}
+ addUserKnob {22 printCryptoInfo T "import psynuke_custom.aldi_rebuild\nreload(psynuke_custom.aldi_rebuild)\npsynuke_custom.aldi_rebuild.show_data()" +STARTLINE}
+ addUserKnob {43 assetList l assets}
+ addUserKnob {43 existList l assetGizmos}
+ addUserKnob {43 matList l materialsList}
+ addUserKnob {26 spacer l "" +STARTLINE T ""}
+ addUserKnob {20 endGroup n -1}
+}
+ Input {
+  inputs 0
+  name beauty
+  xpos -1866
+  ypos -3045
+ }
+ Dot {
+  name Dot4
+  xpos -1832
+  ypos -2814
+ }
+set Na71a5180 [stack 0]
+ Dot {
+  name Dot7
+  xpos -2090
+  ypos -2814
+ }
+ Dot {
+  name Dot3
+  xpos -2090
+  ypos -835
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uCryptoObject/ads0100_lighting_PROPS_bty_uCryptoObject_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uCryptoObject
+  xpos -1392
+  ypos -1188
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N5f29c00 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uCryptoMaterial/ads0100_lighting_PROPS_bty_uCryptoMaterial_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uCryptoMaterial
+  xpos -1392
+  ypos -1342
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N5f29880 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uCryptoAsset/ads0100_lighting_PROPS_bty_uCryptoAsset_v004.%04d.exr
+  format "1280 720 0 0 1280 720 1 HD_720"
+  first 1013
+  last 1051
+  origfirst 1013
+  origlast 1072
+  origset true
+  version 1
+  name uCryptoAsset
+  xpos -1395
+  ypos -1493
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N5f29500 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uMV/ads0100_lighting_PROPS_bty_uMV_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uMV
+  xpos -1653
+  ypos -1884
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uUVI/ads0100_lighting_PROPS_bty_uUVI_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uUVI
+  xpos -1653
+  ypos -2023
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uDepth/ads0100_lighting_PROPS_bty_uDepth_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uDepth
+  xpos -1653
+  ypos -2163
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uPointWorld/ads0100_lighting_PROPS_bty_uPointWorld_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uPointWorld
+  xpos -1653
+  ypos -2303
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uPointCamera/ads0100_lighting_PROPS_bty_uPointCamera_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uPointCamera
+  xpos -1654
+  ypos -2443
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uNormalWorld/ads0100_lighting_PROPS_bty_uNormalWorld_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uNormalWorld
+  xpos -1653
+  ypos -2583
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/uNormalCamera/ads0100_lighting_PROPS_bty_uNormalCamera_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1121
+  origset true
+  name uNormalCamera
+  xpos -1653
+  ypos -2724
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+push $Na71a5180
+add_layer {uNormalCamera uNormalCamera.red uNormalCamera.green uNormalCamera.blue uNormalCamera.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalCamera
+  name ShuffleCopy25
+  label "\[value out2]"
+  xpos -1866
+  ypos -2694
+ }
+add_layer {uNormalWorld uNormalWorld.red uNormalWorld.green uNormalWorld.blue uNormalWorld.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalWorld
+  name ShuffleCopy26
+  label "\[value out2]"
+  xpos -1866
+  ypos -2553
+ }
+add_layer {uPointCamera uPointCamera.red uPointCamera.green uPointCamera.blue uPointCamera.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointCamera
+  name ShuffleCopy28
+  label "\[value out2]"
+  xpos -1866
+  ypos -2413
+ }
+add_layer {uPointWorld uPointWorld.red uPointWorld.green uPointWorld.blue uPointWorld.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointWorld
+  name ShuffleCopy3
+  label "\[value out2]"
+  xpos -1866
+  ypos -2273
+ }
+add_layer {uDepth uDepth.red uDepth.green uDepth.blue uDepth.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uDepth
+  name ShuffleCopy29
+  label "\[value out2]"
+  xpos -1866
+  ypos -2133
+ }
+add_layer {uUVI uUVI.red uUVI.green uUVI.blue uUVI.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uUVI
+  name ShuffleCopy15
+  label "\[value out2]"
+  xpos -1866
+  ypos -1993
+ }
+add_layer {uMV uMV.red uMV.green uMV.blue uMV.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uMV
+  name ShuffleCopy9
+  label "\[value out2]"
+  xpos -1866
+  ypos -1854
+ }
+ Unpremult {
+  channels all
+  name Unpremult4
+  xpos -1866
+  ypos -1671
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy2
+  xpos -1866
+  ypos -1470
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy1
+  xpos -1866
+  ypos -1319
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy3
+  xpos -1866
+  ypos -1165
+ }
+add_layer {startRGBA startRGBA.red startRGBA.green startRGBA.blue startRGBA.alpha}
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  black red
+  white green
+  red2 blue
+  green2 alpha
+  out2 startRGBA
+  name ShuffleCopy4
+  label "\[value out2]"
+  xpos -1866
+  ypos -845
+ }
+ Dot {
+  name Dot17
+  xpos -1832
+  ypos -736
+ }
+set N4ca97180 [stack 0]
+ Dot {
+  name Dot18
+  xpos -2090
+  ypos -736
+ }
+ Dot {
+  name Dot8
+  xpos -2090
+  ypos 1191
+ }
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/diffuse_albedo/ads0100_lighting_PROPS_bty_diffuse_albedo_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name diffuse_albedo
+  xpos -1705
+  ypos -741
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Clamp {
+  minimum 0.001
+  name Clamp1
+  xpos -1705
+  ypos -647
+ }
+push $N4ca97180
+add_layer {diffuse_color diffuse_color.red diffuse_color.green diffuse_color.blue diffuse_color.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 diffuse_color
+  name ShuffleCopy2
+  label "\[value out2]"
+  xpos -1866
+  ypos -647
+ }
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle8
+  label "\[value in]"
+  xpos -1866
+  ypos -524
+ }
+set Nc21aa80 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle9
+  label "\[value in]"
+  xpos -1535
+  ypos -524
+ }
+set Nc21a700 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name Shuffle11
+  label "\[value in]"
+  xpos -1009
+  ypos -524
+ }
+set Nc21a380 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle10
+  label "\[value in]"
+  xpos -622
+  ypos -524
+ }
+set Nc21a000 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle12
+  label "\[value in]"
+  xpos -122
+  ypos -524
+ }
+set N698fc00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle13
+  label "\[value in]"
+  xpos 221
+  ypos -524
+ }
+set N698f880 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle3
+  label "\[value in]"
+  xpos 652
+  ypos -524
+ }
+set N698f500 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle4
+  label "\[value in]"
+  xpos 995
+  ypos -524
+ }
+set N698f180 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle2
+  label "\[value in]"
+  xpos 1303
+  ypos -524
+ }
+set N698ee00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle23
+  label "\[value in]"
+  xpos 1840
+  ypos -524
+ }
+set N698ea80 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/coat_indirect/ads0100_lighting_PROPS_bty_coat_indirect_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name coat_indirect
+  xpos 1096
+  ypos -485
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N698e700 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/coat_direct/ads0100_lighting_PROPS_bty_coat_direct_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name coat_direct
+  xpos 750
+  ypos -480
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N698e380 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/specular_indirect/ads0100_lighting_PROPS_bty_specular_indirect_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name specular_indirect
+  xpos 355
+  ypos -483
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N698e000 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/sss/ads0100_lighting_PROPS_bty_sss_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name sss
+  xpos -451
+  ypos -493
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N60dfc00 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/specular_direct/ads0100_lighting_PROPS_bty_specular_direct_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name specular_direct
+  xpos 9
+  ypos -479
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N60df880 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/diffuse_indirect/ads0100_lighting_PROPS_bty_diffuse_indirect_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name diffuse_indirect
+  xpos -1398
+  ypos -476
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N60df500 [stack 0]
+push 0
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/diffuse_direct/ads0100_lighting_PROPS_bty_diffuse_direct_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name diffuse_direct
+  xpos -1728
+  ypos -483
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N60df180 [stack 0]
+ Read {
+  inputs 0
+  file_type exr
+  file P:/projects/aldicarrotxmas18_33454P/sequences/aldi60/ads0100/lighting/output/render/lighting_PROPS_bty/v004/exr/transmission/ads0100_lighting_PROPS_bty_transmission_v004.%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  first 1013
+  last 1051
+  origfirst 1001
+  origlast 1120
+  origset true
+  name transmission
+  xpos 1483
+  ypos -503
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N60dee00 [stack 0]
+ Merge2 {
+  inputs 8+1
+  name CombineAll
+  xpos 2017
+  ypos -467
+  hide_input true
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  xpos 2017
+  ypos -382
+ }
+push $N698ea80
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge11
+  xpos 1840
+  ypos -382
+ }
+ NoOp {
+  name remainder_OUT
+  note_font_size 20
+  xpos 1840
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov remainder
+ }
+push $N60dee00
+ Dot {
+  name Dot16
+  xpos 1517
+  ypos -318
+ }
+push $N698ee00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy12
+  xpos 1303
+  ypos -322
+ }
+ Unpremult {
+  name Shuffle6_unpremult2
+  xpos 1303
+  ypos -296
+ }
+ NoOp {
+  name transmission_OUT
+  note_font_size 20
+  xpos 1303
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov transmission
+ }
+push $N698e700
+ Dot {
+  name Dot15
+  xpos 1130
+  ypos -318
+ }
+push $N698f180
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy13
+  xpos 995
+  ypos -322
+ }
+ Unpremult {
+  name Shuffle6_unpremult3
+  xpos 995
+  ypos -296
+ }
+ Dot {
+  name Dot5
+  xpos 1029
+  ypos -231
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $N698e380
+ Dot {
+  name Dot14
+  xpos 784
+  ypos -318
+ }
+push $N698f500
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy14
+  xpos 652
+  ypos -322
+ }
+ Unpremult {
+  name Shuffle5_unpremult1
+  xpos 652
+  ypos -296
+ }
+add_layer {spec spec.red spec.green spec.blue spec.alpha}
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge spec
+  name Merge10
+  xpos 652
+  ypos -235
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+ NoOp {
+  name coat_OUT
+  note_font_size 20
+  xpos 652
+  ypos 496
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov coat
+ }
+push $N698e000
+ Dot {
+  name Dot13
+  xpos 389
+  ypos -318
+ }
+push $N698f880
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy6
+  xpos 221
+  ypos -322
+ }
+ Unpremult {
+  name Shuffle6_unpremult
+  xpos 221
+  ypos -296
+ }
+ Dot {
+  name Dot6
+  xpos 255
+  ypos -231
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $N60df880
+ Dot {
+  name Dot12
+  xpos 43
+  ypos -318
+ }
+push $N698fc00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy7
+  xpos -122
+  ypos -322
+ }
+ Unpremult {
+  name Shuffle5_unpremult
+  xpos -122
+  ypos -296
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge spec
+  name Merge2
+  xpos -122
+  ypos -235
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+ NoOp {
+  name spec_OUT
+  note_font_size 20
+  xpos -122
+  ypos 496
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $N60dfc00
+ Dot {
+  name Dot11
+  xpos -417
+  ypos -318
+ }
+push $Nc21a000
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy8
+  xpos -622
+  ypos -322
+ }
+ Unpremult {
+  name Unpremult1
+  xpos -622
+  ypos -296
+ }
+ NoOp {
+  name sss_OUT
+  note_font_size 20
+  xpos -622
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov sss
+ }
+push $Nc21a380
+ Unpremult {
+  name Shuffle4_unpremult
+  xpos -1009
+  ypos -486
+ }
+ NoOp {
+  name color_OUT
+  note_font_size 20
+  xpos -1009
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $N60df500
+ Dot {
+  name Dot10
+  xpos -1364
+  ypos -378
+ }
+push $Nc21a700
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue diffuse.alpha}
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  also_merge diffuse
+  name Merge3
+  xpos -1535
+  ypos -382
+ }
+ Dot {
+  name Dot2
+  xpos -1501
+  ypos -218
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $N60df180
+ Dot {
+  name Dot9
+  xpos -1694
+  ypos -377
+ }
+push $Nc21aa80
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  name Merge4
+  xpos -1866
+  ypos -381
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge {diffuse.red diffuse.green diffuse.blue -diffuse.alpha}
+  name Merge5
+  xpos -1866
+  ypos -222
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ NoOp {
+  name lighting_OUT
+  note_font_size 20
+  xpos -1866
+  ypos 484
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Dot {
+  name Dot1
+  xpos -1832
+  ypos 536
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  output rgb
+  also_merge diffuse
+  name Merge8
+  xpos -1009
+  ypos 532
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name sss_MERGE
+  xpos -622
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name spec_MERGE
+  xpos -122
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name spec_MERGE1
+  xpos 652
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name reflection_MERGE
+  xpos 1303
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name remainder_MERGE
+  xpos 1840
+  ypos 532
+ }
+ Premult {
+  name rebuildPremult
+  xpos 1840
+  ypos 1093
+ }
+ Switch {
+  inputs 2
+  which {{parent.beauty}}
+  name Switch1
+  xpos 1840
+  ypos 1187
+ }
+ Remove {
+  operation keep
+  channels rgba
+  channels2 uPointWorld
+  channels3 uNormalWorld
+  channels4 uPointCamera
+  name Remove1
+  xpos 1840
+  ypos 1396
+  disable true
+ }
+ Output {
+  name Output1
+  xpos 1840
+  ypos 1422
+ }
+push $N5f29880
+add_layer {uCryptoMaterial00 uCryptoMaterial00.red uCryptoMaterial00.green uCryptoMaterial00.blue uCryptoMaterial00.alpha}
+add_layer {uCryptoMaterial01 uCryptoMaterial01.red uCryptoMaterial01.green uCryptoMaterial01.blue uCryptoMaterial01.alpha}
+add_layer {uCryptoMaterial02 uCryptoMaterial02.red uCryptoMaterial02.green uCryptoMaterial02.blue uCryptoMaterial02.alpha}
+ Cryptomatte {
+  name Cryptomatte1
+  xpos -1171
+  ypos -1306
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoMaterial
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoMaterial00.red)) * 1 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 1 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 1 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 1 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoMaterial00.red)) * 16 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 16 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 16 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 16 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoMaterial00.red)) * 64 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 64 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 64 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 64 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression3 ""
+  previewChannel none
+  in00 uCryptoMaterial00
+  in01 uCryptoMaterial01
+  in02 uCryptoMaterial02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+push $N5f29500
+add_layer {uCryptoAsset00 uCryptoAsset00.red uCryptoAsset00.green uCryptoAsset00.blue uCryptoAsset00.alpha}
+add_layer {uCryptoAsset01 uCryptoAsset01.red uCryptoAsset01.green uCryptoAsset01.blue uCryptoAsset01.alpha}
+add_layer {uCryptoAsset02 uCryptoAsset02.red uCryptoAsset02.green uCryptoAsset02.blue uCryptoAsset02.alpha}
+ Cryptomatte {
+  name Cryptomatte3
+  xpos -1171
+  ypos -1457
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoAsset
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoAsset00.red)) * 1 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 1 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 1 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 1 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoAsset00.red)) * 16 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 16 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 16 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 16 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoAsset00.red)) * 64 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 64 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 64 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 64 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression3 ""
+  previewChannel none
+  in00 uCryptoAsset00
+  in01 uCryptoAsset01
+  in02 uCryptoAsset02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+push $N5f29c00
+add_layer {uCryptoObject00 uCryptoObject00.red uCryptoObject00.green uCryptoObject00.blue uCryptoObject00.alpha}
+add_layer {uCryptoObject01 uCryptoObject01.red uCryptoObject01.green uCryptoObject01.blue uCryptoObject01.alpha}
+add_layer {uCryptoObject02 uCryptoObject02.red uCryptoObject02.green uCryptoObject02.blue uCryptoObject02.alpha}
+ Cryptomatte {
+  name Cryptomatte2
+  xpos -1171
+  ypos -1152
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoObject
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoObject00.red)) * 1 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 1 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 1 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 1 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoObject00.red)) * 16 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 16 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 16 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 16 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoObject00.red)) * 64 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 64 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 64 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 64 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression3 ""
+  previewChannel none
+  in00 uCryptoObject00
+  in01 uCryptoObject01
+  in02 uCryptoObject02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+end_group

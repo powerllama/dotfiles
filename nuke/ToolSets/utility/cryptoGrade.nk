@@ -1,0 +1,55 @@
+set cut_paste_input [stack 0]
+version 11.3 v6
+push $cut_paste_input
+Group {
+ name Group2
+ selected true
+ xpos 2444
+ ypos -442
+ addUserKnob {20 User}
+ addUserKnob {22 button T "import cryptomatte_utilities as cu\nimport nuke\n\n\ndef addKnobs(node):\n    # i want to sort these grades but if i do a .sort(), it's sorting node objects, NOT the name of the layer\n    # maybe i should make a dict with the name as a key, node as the value\n    _grades = nuke.allNodes(\"Grade\")\n\n    knobs_to_link = \[\"white\", \"multiply\", \"gamma\", \"mix\", \"disable\"]\n    # knob_list = \[]\n\n    for grade in _grades:\n        knob_group = nuke.Tab_Knob('gradegroup', grade.name(), nuke.TABBEGINCLOSEDGROUP)\n        # knob_list.append(knob_group.name())\n        node.addKnob(knob_group)\n        for knob in grade.allKnobs():\n            if knob.name() in knobs_to_link:\n                newKnob = nuke.Link_Knob(knob.name())\n                newKnob.setLink(grade.name() + '.' + knob.name())\n                # knob_list.append(newKnob.name())\n                node.addKnob(newKnob)\n        knob_group_end = nuke.Tab_Knob('gradegroupend', grade.name(), nuke.TABENDGROUP)\n        node.addKnob(knob_group_end)\n        # knob_list.append(knob_group_end.name())\n    # return knob_list\n\ndef getCryptomatteNames(readNode):\n    import cryptomatte_utilities as cu\n    metadataAssets = \[]\n    if hasattr(cu, \"__version__\"):\n        cinfo = cu.CryptomatteInfo(readNode)\n        metadataAssets = \[x for x in cinfo.parse_manifest()]\n    else:\n        id_name_pairs = cu.parse_metadata(grp)\n        metadataAssets = \[x\[1] for x in id_name_pairs]\n    #print metadataAssets\n    return metadataAssets\n\ndef mat_to_grades():\n    group_node = nuke.thisNode()\n    for i in nuke.allNodes():\n        if i.name() not in ('input_dot', 'Input1', 'Output1', 'CryptoMaterial', 'Unpremult1', 'Premult1'):\n            nuke.delete(i)\n\n\n    n = nuke.toNode(\"CryptoMaterial\")\n    materials = getCryptomatteNames(n)\n    materials.sort()\n    #print materials\n    initNode = nuke.toNode(\"input_dot\")\n    for material in materials:\n        crypto = nuke.nodes.Cryptomatte(cryptoLayer='uCryptoMaterial')\n        crypto\['matteList'].setValue(material)\n        crypto.setInput(0,n)\n        n = crypto\n        g = nuke.nodes.Grade(name=material)\n        g.setInput(0,initNode)\n        g.setInput(1,crypto)\n        initNode = g\n\n    nuke.toNode(\"Premult1\").setInput(0,initNode)\n    if group_node.knob('gradegroup'):\n        allknobs = group_node.allKnobs()\n        indx = allknobs.index(group_node.knob('button'))\n        gradeknobs = allknobs\[indx+1:]\n        for knob in gradeknobs:\n            group_node.removeKnob(knob)\n\n    addKnobs(group_node)\n\nmat_to_grades()" +STARTLINE}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 0
+ }
+ Dot {
+  name input_dot
+  xpos 34
+  ypos 78
+ }
+set Nf9e37000 [stack 0]
+ Output {
+  name Output1
+  xpos 0
+  ypos 511
+ }
+push $Nf9e37000
+add_layer {uCryptoMaterial00 uCryptoMaterial00.red uCryptoMaterial00.green uCryptoMaterial00.blue uCryptoMaterial00.alpha}
+add_layer {uCryptoMaterial01 uCryptoMaterial01.red uCryptoMaterial01.green uCryptoMaterial01.blue uCryptoMaterial01.alpha}
+add_layer {uCryptoMaterial02 uCryptoMaterial02.red uCryptoMaterial02.green uCryptoMaterial02.blue uCryptoMaterial02.alpha}
+ Cryptomatte {
+  name CryptoMaterial
+  xpos -445
+  ypos 129
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoMaterial
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoMaterial00.red)) * 1 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 1 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 1 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 1 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoMaterial00.red)) * 16 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 16 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 16 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 16 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoMaterial00.red)) * 64 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 64 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 64 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 64 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression3 ""
+  previewChannel none
+  in00 uCryptoMaterial00
+  in01 uCryptoMaterial01
+  in02 uCryptoMaterial02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+end_group

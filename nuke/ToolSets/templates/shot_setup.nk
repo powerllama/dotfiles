@@ -1,0 +1,3294 @@
+#! C:/Temp/psyop_cache/apps/nuke/win64/11.1v2/nuke-11.1.2.dll -nx
+version 11.1 v2
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1904" h="1131" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1241" stretch="1"/>
+            <splitter orientation="2">
+                <split size="0"/>
+                <dock id=""/>
+                <split size="1083"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="-1928" y="0" w="1920" h="1177" screen="1">
+        <splitter orientation="2">
+            <split size="1177"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name Z:/.nuke/ToolSets/templates/shot_setup.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT linear
+ monitorLut Gamma2.2
+ int8Lut Gamma2.2
+ int16Lut Gamma2.2
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 psycolor_tab l Psycolor}
+ addUserKnob {6 ocio_viewer_use_metadata l "OCIO Viewer Use Metadata" -STARTLINE}
+ ocio_viewer_use_metadata true
+ addUserKnob {6 viewer_overlay l "Show Viewer Overlay" -STARTLINE}
+ addUserKnob {4 viewer_look l "Viewer Look" M {None grade tonemap}}
+}
+BackdropNode {
+ inputs 0
+ name "out nodes"
+ tile_color 0x44444401
+ gl_color 0x44444401
+ label "<center>out nodes"
+ note_font Verdana
+ note_font_size 20
+ xpos 859
+ ypos 16
+ bdheight 354
+}
+Camera2 {
+ inputs 0
+ read_from_file true
+ translate {{curve x999 175.1883651 175.1883651 175.0394325 174.8904412 174.7414062 174.592343 174.4432257 174.2940697 174.1448902 173.9956615 173.8463989 173.6971176 173.547792 173.3984372 173.2490687 173.0996606 172.9502282 172.8007869 172.6513108 172.5018153 172.3523156 172.202786 172.0532418 171.9036983 171.7541296 171.6045512 171.4549783 171.3053851 171.1557869 171.0061991 170.8565959 170.7069925 170.5574042 170.4078053 170.2582112 170.108637 169.959057 169.8094865 169.6599408 169.5103942 169.3608619 169.2113592 169.0618604 168.9123807 168.7629355 168.613499 168.4640865 168.3147132 168.1653535 168.0160226 167.8667358 167.7174673 167.5682325 167.4190466 167.2698839 167.1207596 166.9716891 166.8226465 166.6736473 166.5247066 166.5247066 166.5247066 166.5247066} {curve x999 4.493850166 4.493850166 4.493850868 4.493851534 4.493852167 4.493852765 4.493853331 4.493853865 4.493854368 4.493854841 4.493855284 4.493855699 4.493856085 4.493856445 4.493856778 4.493857086 4.49385737 4.493857629 4.493857866 4.493858081 4.493858274 4.493858446 4.493858599 4.493858733 4.493858849 4.493858947 4.493859029 4.493859096 4.493859147 4.493859185 4.493859209 4.493859221 4.493859222 4.493859211 4.493859191 4.493859161 4.493859123 4.493859078 4.493859026 4.493858967 4.493858904 4.493858837 4.493858766 4.493858692 4.493858617 4.49385854 4.493858464 4.493858388 4.493858313 4.493858241 4.493858171 4.493858106 4.493858045 4.49385799 4.49385794 4.493857898 4.493857864 4.493857839 4.493857823 4.493857818 4.493857818 4.493857818 4.493857818} {curve x999 185.4318696 185.4318696 185.4181934 185.4045161 185.3908393 185.3771641 185.3634882 185.3498127 185.3361391 185.3224648 185.3087911 185.2951194 185.2814471 185.2677756 185.2541062 185.2404364 185.2267675 185.2131007 185.1994338 185.1857678 185.1721042 185.1584405 185.1447779 185.1311178 185.1174577 185.1037989 185.0901426 185.0764866 185.0628319 185.04918 185.0355283 185.0218782 185.008231 184.9945841 184.980939 184.9672968 184.9536552 184.9400154 184.9263787 184.9127427 184.8991086 184.8854778 184.8718478 184.8582199 184.8445953 184.8309717 184.8173503 184.8037325 184.7901157 184.7765012 184.7628904 184.7492808 184.7356736 184.7220703 184.7084682 184.6948688 184.6812733 184.6676793 184.654088 184.6405007 184.6405007 184.6405007 184.6405007}}
+ rotate {{curve x999 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761 10.53865761} {curve x999 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233 -53.53825233} {curve x999 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685 2.043661685}}
+ scaling {{curve x999 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1} {curve x999 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1} {curve x999 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1}}
+ uniform_scale {{curve x999 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1}}
+ skew {{curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}}
+ pivot {{curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}}
+ focal {{curve x999 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25}}
+ haperture {{curve x999 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152 23.75182152}}
+ vaperture {{curve x999 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002 13.3604002}}
+ near {{curve x999 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5 7.5}}
+ far {{curve x999 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000 100000000}}
+ win_translate {{curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0} {curve x999 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0}}
+ focal_point {{curve x999 262.4971924 262.4971924 262.3857422 262.2712402 262.1539307 262.0339355 261.9114075 261.7865601 261.6595154 261.5304871 261.3995972 261.2670593 261.1329956 260.9975891 260.8610229 260.7234192 260.5849915 260.4459229 260.3063049 260.1663818 260.0262756 259.8861389 259.7461853 259.6065674 259.4674377 259.3289795 259.1913452 259.054718 258.9192505 258.7850952 258.6524658 258.5214844 258.392334 258.2651978 258.1401978 258.0175476 257.8973999 257.7799072 257.6652832 257.5536194 257.4451294 257.3399963 257.2383423 257.1403809 257.0462341 256.9560852 256.8701172 256.7884827 256.7113647 256.638916 256.5712891 256.508667 256.4512024 256.3991089 256.3525085 256.3115845 256.2764893 256.247406 256.2244873 256.2079163 256.1978455 256.194458 256.194458}}
+ fstop {{curve x999 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2}}
+ file P:/projects/clashridicduel_28423P/sequences/clashRidiculousDuel/crd0200/animation/output/camcache/animation_renderCam/v056/alembic/crd0200_animation_renderCam_v056.abc
+ frame_rate {{fps}}
+ name renderCam
+ xpos -116
+ ypos -271
+}
+Dot {
+ name Dot3
+ xpos -92
+ ypos -150
+}
+Shuffle {
+ inputs 0
+ alpha white
+ name Shuffle1
+ label "\[value in]"
+ xpos 32
+ ypos -281
+}
+Transform {
+ translate {-1270 -970}
+ scale 1.27
+ center {960 540}
+ shutteroffset centred
+ name Transform2
+ xpos 32
+ ypos -243
+}
+Card2 {
+ rows 64
+ columns 64
+ translate {1183.668213 344.6767883 -748.6669922}
+ rotate {8 -55 0}
+ uniform_scale 1900
+ control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+ name Card1
+ xpos 32
+ ypos -205
+}
+push 0
+ScanlineRender {
+ inputs 3
+ conservative_shader_sampling false
+ motion_vectors_type distance
+ name ScanlineRender1
+ xpos 32
+ ypos -154
+}
+VectorBlur2 {
+ uv forward
+ scale 10
+ name VectorBlur2_1
+ xpos 32
+ ypos -128
+ disable {{"\$gui"}}
+}
+Dot {
+ name Dot2
+ xpos 66
+ ypos -71
+}
+Dot {
+ name Dot4
+ xpos 676
+ ypos -71
+}
+set Nb3533500 [stack 0]
+push $Nb3533500
+Group {
+ inputs 0
+ name REBUILD2
+ label "\[lindex \[split \[lindex \[split \[value input0.file] /] end] .] 0]\n\[lindex \[split \[lindex \[split \[value input1.file] /] end] .] 0]"
+ xpos -133
+ ypos -959
+ addUserKnob {20 rebuild}
+ addUserKnob {22 match l matchAovs T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.matchAovs()" +STARTLINE}
+ addUserKnob {20 info}
+ addUserKnob {22 addAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.addAssetGizmos(\"\")"}
+ addUserKnob {22 clearAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.clearAssetGizmos()"}
+ addUserKnob {22 forceAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.forceAddAssetGizmos()"}
+ addUserKnob {22 printCryptoInfo T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.showData()" +STARTLINE}
+ addUserKnob {43 assetList l "" +STARTLINE}
+ addUserKnob {43 existList l "" -STARTLINE}
+ addUserKnob {43 matList l "" -STARTLINE}
+ addUserKnob {26 spacer l "" -STARTLINE T "\t"}
+ addUserKnob {20 endGroup n -1}
+}
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoAsset/ctt0010_lighting_CHARS_FG_Util_uCryptoAsset_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 20
+  name uCryptoAsset
+  xpos -1265
+  ypos -1541
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Naf590e00 [stack 0]
+add_layer {uCryptoAsset uCryptoAsset.red uCryptoAsset.green uCryptoAsset.blue}
+add_layer {uCryptoAsset00 uCryptoAsset00.red uCryptoAsset00.green uCryptoAsset00.blue uCryptoAsset00.alpha}
+add_layer {uCryptoAsset01 uCryptoAsset01.red uCryptoAsset01.green uCryptoAsset01.blue uCryptoAsset01.alpha}
+add_layer {uCryptoAsset02 uCryptoAsset02.red uCryptoAsset02.green uCryptoAsset02.blue uCryptoAsset02.alpha}
+ Cryptomatte {
+  name Cryptomatte3
+  xpos -1063
+  ypos -1511
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoAsset
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoAsset00.red)) * 1 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 1 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 1 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 1 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoAsset00.red)) * 16 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 16 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 16 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 16 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoAsset00.red)) * 64 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 64 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 64 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 64 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoAsset
+  in00 uCryptoAsset00
+  in01 uCryptoAsset01
+  in02 uCryptoAsset02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/diffuse_color/ctt0010_lighting_CHARS_FG_Beauty_diffuse_color_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 40
+  in_colorspace linear
+  out_colorspace linear
+  name diffuse_color
+  xpos -1756
+  ypos -771
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Clamp {
+  minimum 0.001
+  name Clamp1
+  xpos -1756
+  ypos -677
+ }
+ Input {
+  inputs 0
+  name lAll
+  xpos -1735
+  ypos -955
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoObject/ctt0010_lighting_CHARS_FG_Util_uCryptoObject_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 20
+  name uCryptoObject
+  xpos -1262
+  ypos -1236
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Naf649c00 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoMaterial/ctt0010_lighting_CHARS_FG_Util_uCryptoMaterial_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 18
+  name uCryptoMaterial
+  xpos -1264
+  ypos -1390
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Naf649880 [stack 0]
+push $Naf590e00
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uuvDepth/ctt0010_lighting_CHARS_FG_Util_uuvDepth_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 13
+  in_colorspace linear
+  out_colorspace linear
+  name uuvDepth
+  xpos -1724
+  ypos -1969
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uPRef/ctt0010_lighting_CHARS_FG_Util_uPRef_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 12
+  in_colorspace linear
+  out_colorspace linear
+  name uPRef
+  xpos -1722
+  ypos -2134
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/P/ctt0010_lighting_CHARS_FG_Util_P_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 8
+  in_colorspace linear
+  out_colorspace linear
+  name P
+  xpos -1721
+  ypos -2287
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uPointCamera/ctt0010_lighting_CHARS_FG_Util_uPointCamera_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 14
+  in_colorspace linear
+  out_colorspace linear
+  name uPointCamera
+  xpos -1724
+  ypos -2445
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uNormalWorld/ctt0010_lighting_CHARS_FG_Util_uNormalWorld_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 12
+  in_colorspace linear
+  out_colorspace linear
+  name uNormalWorld
+  xpos -1721
+  ypos -2613
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uNormalCamera/ctt0010_lighting_CHARS_FG_Util_uNormalCamera_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 14
+  in_colorspace linear
+  out_colorspace linear
+  name uNormalCamera
+  xpos -1724
+  ypos -2772
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Input {
+  inputs 0
+  name uBasic
+  xpos -1866
+  ypos -2871
+  number 1
+ }
+add_layer {uNormalCamera uNormalCamera.red uNormalCamera.green uNormalCamera.blue uNormalCamera.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalCamera
+  name ShuffleCopy25
+  label "\[value out2]"
+  xpos -1866
+  ypos -2694
+ }
+add_layer {uNormalWorld uNormalWorld.red uNormalWorld.green uNormalWorld.blue uNormalWorld.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalWorld
+  name ShuffleCopy26
+  label "\[value out2]"
+  xpos -1866
+  ypos -2535
+ }
+add_layer {uPointCamera uPointCamera.red uPointCamera.green uPointCamera.blue uPointCamera.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointCamera
+  name ShuffleCopy28
+  label "\[value out2]"
+  xpos -1866
+  ypos -2367
+ }
+add_layer {uPointWorld uPointWorld.red uPointWorld.green uPointWorld.blue uPointWorld.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointWorld
+  name ShuffleCopy29
+  label "\[value out2]"
+  xpos -1866
+  ypos -2207
+ }
+add_layer {uPRef uPRef.red uPRef.green uPRef.blue uPRef.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPRef
+  name ShuffleCopy10
+  label "\[value out2]"
+  xpos -1866
+  ypos -2056
+ }
+add_layer {uUVI uUVI.red uUVI.green uUVI.blue uUVI.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uUVI
+  name ShuffleCopy15
+  label "\[value out2]"
+  xpos -1866
+  ypos -1891
+ }
+ Unpremult {
+  channels all
+  name Unpremult4
+  xpos -1866
+  ypos -1671
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy2
+  xpos -1866
+  ypos -1470
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy1
+  xpos -1866
+  ypos -1319
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy3
+  xpos -1866
+  ypos -1165
+ }
+add_layer {startRGBA startRGBA.red startRGBA.green startRGBA.blue startRGBA.alpha}
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  black red
+  white green
+  red2 blue
+  green2 alpha
+  out2 startRGBA
+  name ShuffleCopy4
+  label "\[value out2]"
+  xpos -1866
+  ypos -845
+ }
+add_layer {diffuse_color diffuse_color.red diffuse_color.green diffuse_color.blue diffuse_color.alpha}
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 diffuse_color
+  name ShuffleCopy2
+  label "\[value out2]"
+  xpos -1866
+  ypos -647
+ }
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle8
+  label "\[value in]"
+  xpos -1866
+  ypos -524
+ }
+set Nafceb180 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle9
+  label "\[value in]"
+  xpos -1535
+  ypos -524
+ }
+set Nafceae00 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name Shuffle11
+  label "\[value in]"
+  xpos -1009
+  ypos -524
+ }
+set Nafceaa80 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle3
+  label "\[value in]"
+  xpos -584
+  ypos -524
+ }
+set Nafcea700 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle4
+  label "\[value in]"
+  xpos -253
+  ypos -524
+ }
+set Nafcea380 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle10
+  label "\[value in]"
+  xpos 54
+  ypos -524
+ }
+set Nafcea000 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle12
+  label "\[value in]"
+  xpos 554
+  ypos -524
+ }
+set Nafd27c00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle13
+  label "\[value in]"
+  xpos 897
+  ypos -524
+ }
+set Nafd27880 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle2
+  label "\[value in]"
+  xpos 1303
+  ypos -524
+ }
+set Nafd27500 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle1
+  label "\[value in]"
+  xpos 1679
+  ypos -524
+ }
+set Nafd27180 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle14
+  label "\[value in]"
+  xpos 2130
+  ypos -524
+ }
+set Nafd26e00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle15
+  label "\[value in]"
+  xpos 2530
+  ypos -524
+ }
+set Nafd26a80 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle23
+  label "\[value in]"
+  xpos 2870
+  ypos -524
+ }
+set Nafd26700 [stack 0]
+ Shuffle {
+  in uPointCamera
+  in2 startRGBA
+  red blue
+  green blue
+  name Shuffle17
+  label "\[value in]"
+  xpos 3260
+  ypos -524
+ }
+ Unpremult {
+  name Shuffle9_unpremult
+  xpos 3260
+  ypos -473
+ }
+ ml_AtmosControl {
+  name ml_AtmosControl
+  xpos 3260
+  ypos -362
+  whitepoint -2000
+  atmos_Grade_gamma 0.84
+ }
+ NoOp {
+  name atmos_OUt
+  note_font_size 20
+  xpos 3260
+  ypos 498
+ }
+push $Nafd26700
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_diffuse/ctt0010_lighting_CHARS_FG_Beauty_direct_diffuse_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name direct_diffuse
+  xpos -1756
+  ypos -495
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafd5a700 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_diffuse/ctt0010_lighting_CHARS_FG_Beauty_indirect_diffuse_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_diffuse
+  xpos -1402
+  ypos -490
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafd5a380 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_backlight/ctt0010_lighting_CHARS_FG_Beauty_direct_backlight_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 35
+  in_colorspace linear
+  out_colorspace linear
+  name direct_backlight
+  xpos -474
+  ypos -493
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafd5a000 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_backlight/ctt0010_lighting_CHARS_FG_Beauty_indirect_backlight_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 33
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_backlight
+  xpos -120
+  ypos -490
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdafc00 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/sss/ctt0010_lighting_CHARS_FG_Beauty_sss_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 30
+  in_colorspace linear
+  out_colorspace linear
+  name sss
+  xpos 164
+  ypos -500
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdaf880 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_specular/ctt0010_lighting_CHARS_FG_Beauty_direct_specular_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name direct_specular
+  xpos 652
+  ypos -503
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdaf500 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_specular_2/ctt0010_lighting_CHARS_FG_Beauty_direct_specular_2_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 27
+  in_colorspace linear
+  out_colorspace linear
+  name direct_specular_2
+  xpos 762
+  ypos -485
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdaf180 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_specular/ctt0010_lighting_CHARS_FG_Beauty_indirect_specular_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 42
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_specular
+  xpos 998
+  ypos -485
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdaee00 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_specular_2/ctt0010_lighting_CHARS_FG_Beauty_indirect_specular_2_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 29
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_specular_2
+  xpos 1108
+  ypos -484
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdaea80 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/reflection/ctt0010_lighting_CHARS_FG_Beauty_reflection_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 23
+  in_colorspace linear
+  out_colorspace linear
+  name reflection
+  xpos 1403
+  ypos -477
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdae700 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/sheen/ctt0010_lighting_CHARS_FG_Beauty_sheen_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 21
+  in_colorspace linear
+  out_colorspace linear
+  name sheen
+  xpos 1779
+  ypos -477
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdae380 [stack 0]
+push 0
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/refraction/ctt0010_lighting_CHARS_FG_Beauty_refraction_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 36
+  in_colorspace linear
+  out_colorspace linear
+  name refraction
+  xpos 2303
+  ypos -491
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafdae000 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/emission/ctt0010_lighting_CHARS_FG_Beauty_emission_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 26
+  in_colorspace linear
+  out_colorspace linear
+  name emission
+  xpos 2661
+  ypos -492
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set Nafe21c00 [stack 0]
+ Merge2 {
+  inputs 13+1
+  name CombineAll
+  xpos 3047
+  ypos -470
+  hide_input true
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  xpos 3047
+  ypos -382
+ }
+push $Nafd26700
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge11
+  xpos 2870
+  ypos -382
+ }
+ NoOp {
+  name remainder_OUT
+  note_font_size 20
+  xpos 2870
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov remainder
+ }
+push $Nafe21c00
+push $Nafd26a80
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy3
+  xpos 2530
+  ypos -408
+ }
+ Unpremult {
+  name Shuffle8_unpremult
+  xpos 2530
+  ypos -382
+ }
+ NoOp {
+  name emission_OUT
+  note_font_size 20
+  xpos 2530
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov emission
+ }
+push $Nafdae000
+push $Nafd26e00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy5
+  xpos 2130
+  ypos -407
+ }
+ NoOp {
+  name refr_OUT
+  note_font_size 20
+  xpos 2130
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov refr
+ }
+push $Nafdae380
+push $Nafd27180
+add_layer {sheen sheen.red sheen.green sheen.blue sheen.alpha}
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  out2 sheen
+  name ShuffleCopy11
+  xpos 1679
+  ypos -391
+ }
+ Unpremult {
+  name Shuffle6_unpremult1
+  xpos 1679
+  ypos -365
+ }
+ NoOp {
+  name sheen_OUT
+  note_font_size 20
+  xpos 1679
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov sheen
+ }
+push $Nafdae700
+push $Nafd27500
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy12
+  xpos 1303
+  ypos -391
+ }
+ Unpremult {
+  name Shuffle6_unpremult2
+  xpos 1303
+  ypos -365
+ }
+ NoOp {
+  name reflection_OUT
+  note_font_size 20
+  xpos 1303
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov reflection
+ }
+push $Nafdaea80
+push $Nafdaee00
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name Merge7
+  xpos 998
+  ypos -360
+ }
+push $Nafd27880
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy6
+  xpos 897
+  ypos -360
+ }
+ Unpremult {
+  name Shuffle6_unpremult
+  xpos 897
+  ypos -334
+ }
+ Dot {
+  name Dot6
+  xpos 931
+  ypos -231
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $Nafdaf180
+push $Nafdaf500
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name Merge6
+  xpos 652
+  ypos -354
+ }
+push $Nafd27c00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy7
+  xpos 554
+  ypos -354
+ }
+ Unpremult {
+  name Shuffle5_unpremult
+  xpos 554
+  ypos -270
+ }
+add_layer {spec spec.red spec.green spec.blue spec.alpha}
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge spec
+  name Merge2
+  xpos 554
+  ypos -235
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+ NoOp {
+  name spec_OUT
+  note_font_size 20
+  xpos 554
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $Nafdaf880
+push $Nafcea000
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy8
+  xpos 54
+  ypos -416
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 54
+  ypos -392
+ }
+ NoOp {
+  name sss_OUT
+  note_font_size 20
+  xpos 54
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov sss
+ }
+push $Nafdafc00
+push $Nafcea380
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy14
+  xpos -253
+  ypos -406
+ }
+ Unpremult {
+  name Unpremult2
+  xpos -253
+  ypos -371
+ }
+ Dot {
+  name Dot5
+  xpos -219
+  ypos -215
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+push $Nafd5a000
+push $Nafcea700
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy13
+  xpos -584
+  ypos -409
+ }
+ Unpremult {
+  name Unpremult3
+  xpos -584
+  ypos -360
+ }
+add_layer {backlight backlight.red backlight.green backlight.blue backlight.alpha}
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge backlight
+  name Merge1
+  xpos -584
+  ypos -219
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+ NoOp {
+  name backlight_OUT
+  note_font_size 20
+  xpos -584
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+push $Nafceaa80
+ Unpremult {
+  name Shuffle4_unpremult
+  xpos -1009
+  ypos -428
+ }
+ NoOp {
+  name color_OUT
+  note_font_size 20
+  xpos -1009
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $Nafd5a380
+push $Nafceae00
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue diffuse.alpha}
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  also_merge diffuse
+  name Merge3
+  xpos -1535
+  ypos -406
+ }
+ Dot {
+  name Dot2
+  xpos -1501
+  ypos -218
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $Nafd5a700
+push $Nafceb180
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  name Merge4
+  xpos -1866
+  ypos -409
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge {diffuse.red diffuse.green diffuse.blue -diffuse.alpha}
+  name Merge5
+  xpos -1866
+  ypos -222
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ NoOp {
+  name lighting_OUT
+  note_font_size 20
+  xpos -1866
+  ypos 484
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Dot {
+  name Dot1
+  xpos -1832
+  ypos 536
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  output rgb
+  also_merge diffuse
+  name Merge8
+  xpos -1009
+  ypos 532
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name backlight_MERGE
+  xpos -584
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name sss_MERGE
+  xpos 54
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name spec_MERGE
+  xpos 554
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name reflection_MERGE
+  xpos 1303
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name sheen_MERGE
+  xpos 1679
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name refr_MERGE
+  xpos 2130
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name emission_MERGE
+  xpos 2530
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name remainder_MERGE
+  xpos 2870
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name atmos_MERGE
+  xpos 3260
+  ypos 532
+  disable true
+ }
+ Reformat {
+  name Reformat1
+  xpos 3268
+  ypos 1236
+ }
+ Premult {
+  name rebuildPremult
+  xpos 3268
+  ypos 1262
+ }
+ Remove {
+  operation keep
+  channels rgba
+  channels2 uPointWorld
+  channels3 uNormalWorld
+  channels4 uPointCamera
+  name Remove1
+  xpos 3268
+  ypos 1288
+  disable true
+ }
+ Output {
+  name Output1
+  xpos 3268
+  ypos 1314
+ }
+push $Naf649880
+add_layer {uCryptoMaterial uCryptoMaterial.red uCryptoMaterial.green uCryptoMaterial.blue}
+add_layer {uCryptoMaterial00 uCryptoMaterial00.red uCryptoMaterial00.green uCryptoMaterial00.blue uCryptoMaterial00.alpha}
+add_layer {uCryptoMaterial01 uCryptoMaterial01.red uCryptoMaterial01.green uCryptoMaterial01.blue uCryptoMaterial01.alpha}
+add_layer {uCryptoMaterial02 uCryptoMaterial02.red uCryptoMaterial02.green uCryptoMaterial02.blue uCryptoMaterial02.alpha}
+ Cryptomatte {
+  name Cryptomatte1
+  xpos -1049
+  ypos -1360
+  matteOutput alpha
+  matteList "chrome2_SHDSG, coolerChrome_sg, flatterMetal_SHDSG"
+  cryptoLayer uCryptoMaterial
+  expression "((uCryptoMaterial00.red == 3.72321380837e-07 || uCryptoMaterial00.red == -2.18987693305e-38 || uCryptoMaterial00.red == -1.3232663672e+18) ? uCryptoMaterial00.green : 0.0) + ((uCryptoMaterial00.blue == 3.72321380837e-07 || uCryptoMaterial00.blue == -2.18987693305e-38 || uCryptoMaterial00.blue == -1.3232663672e+18) ? uCryptoMaterial00.alpha : 0.0) + ((uCryptoMaterial01.red == 3.72321380837e-07 || uCryptoMaterial01.red == -2.18987693305e-38 || uCryptoMaterial01.red == -1.3232663672e+18) ? uCryptoMaterial01.green : 0.0) + ((uCryptoMaterial01.blue == 3.72321380837e-07 || uCryptoMaterial01.blue == -2.18987693305e-38 || uCryptoMaterial01.blue == -1.3232663672e+18) ? uCryptoMaterial01.alpha : 0.0) + ((uCryptoMaterial02.red == 3.72321380837e-07 || uCryptoMaterial02.red == -2.18987693305e-38 || uCryptoMaterial02.red == -1.3232663672e+18) ? uCryptoMaterial02.green : 0.0) + ((uCryptoMaterial02.blue == 3.72321380837e-07 || uCryptoMaterial02.blue == -2.18987693305e-38 || uCryptoMaterial02.blue == -1.3232663672e+18) ? uCryptoMaterial02.alpha : 0.0) + 0"
+  keyedName coolerChrome_sg
+  previewExpression0 "((mantissa(abs(uCryptoMaterial00.red)) * 1 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 1 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 1 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 1 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoMaterial00.red)) * 16 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 16 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 16 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 16 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoMaterial00.red)) * 64 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 64 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 64 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 64 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoMaterial
+  in00 uCryptoMaterial00
+  in01 uCryptoMaterial01
+  in02 uCryptoMaterial02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+push $Naf649c00
+add_layer {uCryptoObject uCryptoObject.red uCryptoObject.green uCryptoObject.blue}
+add_layer {uCryptoObject00 uCryptoObject00.red uCryptoObject00.green uCryptoObject00.blue uCryptoObject00.alpha}
+add_layer {uCryptoObject01 uCryptoObject01.red uCryptoObject01.green uCryptoObject01.blue uCryptoObject01.alpha}
+add_layer {uCryptoObject02 uCryptoObject02.red uCryptoObject02.green uCryptoObject02.blue uCryptoObject02.alpha}
+ Cryptomatte {
+  name Cryptomatte2
+  xpos -1052
+  ypos -1206
+  matteOutput alpha
+  matteList "chrome_GeoShape, frontlight_glass02_Geo1Shape, frontlight_glass02_GeoShape, Lf_frontWheelRubber_01_Geo01Shape, Lf_frontWheelRubber_01_GeoShape, Lf_frontWheelRubber_02_Geo01Shape, Lf_frontWheelRubber_02_GeoShape, Lf_frontWheelRubber_03_Geo01Shape, Lf_frontWheelRubber_04_Geo01Shape, Lf_frontWheelRubber_04_GeoShape, Lf_frontWheelRubber_05_GeoShape, Lf_frontWheelRubber_06_Geo01Shape, Lf_frontWheelRubber_06_GeoShape, Lf_rearWheelRubber_01_GeoShape, Lf_rearWheelRubber_02_GeoShape, Lf_rearWheelRubber_04_GeoShape, Lf_rearWheelRubber_05_GeoShape, Lf_rearWheelRubber_06_GeoShape, Rt_handle_GeoShape"
+  cryptoLayer uCryptoObject
+  expression "((uCryptoObject00.red == -1.10129611834e-19 || uCryptoObject00.red == 3.77016838163e+25 || uCryptoObject00.red == 5.30799127318e-07 || uCryptoObject00.red == -1.8012761994e+30 || uCryptoObject00.red == 0.0011479400564 || uCryptoObject00.red == -5.49541752168e+20 || uCryptoObject00.red == 5.48776709351e-25 || uCryptoObject00.red == 0.0171870291233 || uCryptoObject00.red == 5.37284898758 || uCryptoObject00.red == -6.73303575979e-14 || uCryptoObject00.red == -1.2614168576e+11 || uCryptoObject00.red == 1.8551061694e-37 || uCryptoObject00.red == -15.026216507 || uCryptoObject00.red == 2.23898168295e+33 || uCryptoObject00.red == 20475.1503906 || uCryptoObject00.red == 9.63810391228e+14 || uCryptoObject00.red == 0.0196637958288 || uCryptoObject00.red == 1.98044075881e+31 || uCryptoObject00.red == -4.82972004012e+28) ? uCryptoObject00.green : 0.0) + ((uCryptoObject00.blue == -1.10129611834e-19 || uCryptoObject00.blue == 3.77016838163e+25 || uCryptoObject00.blue == 5.30799127318e-07 || uCryptoObject00.blue == -1.8012761994e+30 || uCryptoObject00.blue == 0.0011479400564 || uCryptoObject00.blue == -5.49541752168e+20 || uCryptoObject00.blue == 5.48776709351e-25 || uCryptoObject00.blue == 0.0171870291233 || uCryptoObject00.blue == 5.37284898758 || uCryptoObject00.blue == -6.73303575979e-14 || uCryptoObject00.blue == -1.2614168576e+11 || uCryptoObject00.blue == 1.8551061694e-37 || uCryptoObject00.blue == -15.026216507 || uCryptoObject00.blue == 2.23898168295e+33 || uCryptoObject00.blue == 20475.1503906 || uCryptoObject00.blue == 9.63810391228e+14 || uCryptoObject00.blue == 0.0196637958288 || uCryptoObject00.blue == 1.98044075881e+31 || uCryptoObject00.blue == -4.82972004012e+28) ? uCryptoObject00.alpha : 0.0) + ((uCryptoObject01.red == -1.10129611834e-19 || uCryptoObject01.red == 3.77016838163e+25 || uCryptoObject01.red == 5.30799127318e-07 || uCryptoObject01.red == -1.8012761994e+30 || uCryptoObject01.red == 0.0011479400564 || uCryptoObject01.red == -5.49541752168e+20 || uCryptoObject01.red == 5.48776709351e-25 || uCryptoObject01.red == 0.0171870291233 || uCryptoObject01.red == 5.37284898758 || uCryptoObject01.red == -6.73303575979e-14 || uCryptoObject01.red == -1.2614168576e+11 || uCryptoObject01.red == 1.8551061694e-37 || uCryptoObject01.red == -15.026216507 || uCryptoObject01.red == 2.23898168295e+33 || uCryptoObject01.red == 20475.1503906 || uCryptoObject01.red == 9.63810391228e+14 || uCryptoObject01.red == 0.0196637958288 || uCryptoObject01.red == 1.98044075881e+31 || uCryptoObject01.red == -4.82972004012e+28) ? uCryptoObject01.green : 0.0) + ((uCryptoObject01.blue == -1.10129611834e-19 || uCryptoObject01.blue == 3.77016838163e+25 || uCryptoObject01.blue == 5.30799127318e-07 || uCryptoObject01.blue == -1.8012761994e+30 || uCryptoObject01.blue == 0.0011479400564 || uCryptoObject01.blue == -5.49541752168e+20 || uCryptoObject01.blue == 5.48776709351e-25 || uCryptoObject01.blue == 0.0171870291233 || uCryptoObject01.blue == 5.37284898758 || uCryptoObject01.blue == -6.73303575979e-14 || uCryptoObject01.blue == -1.2614168576e+11 || uCryptoObject01.blue == 1.8551061694e-37 || uCryptoObject01.blue == -15.026216507 || uCryptoObject01.blue == 2.23898168295e+33 || uCryptoObject01.blue == 20475.1503906 || uCryptoObject01.blue == 9.63810391228e+14 || uCryptoObject01.blue == 0.0196637958288 || uCryptoObject01.blue == 1.98044075881e+31 || uCryptoObject01.blue == -4.82972004012e+28) ? uCryptoObject01.alpha : 0.0) + ((uCryptoObject02.red == -1.10129611834e-19 || uCryptoObject02.red == 3.77016838163e+25 || uCryptoObject02.red == 5.30799127318e-07 || uCryptoObject02.red == -1.8012761994e+30 || uCryptoObject02.red == 0.0011479400564 || uCryptoObject02.red == -5.49541752168e+20 || uCryptoObject02.red == 5.48776709351e-25 || uCryptoObject02.red == 0.0171870291233 || uCryptoObject02.red == 5.37284898758 || uCryptoObject02.red == -6.73303575979e-14 || uCryptoObject02.red == -1.2614168576e+11 || uCryptoObject02.red == 1.8551061694e-37 || uCryptoObject02.red == -15.026216507 || uCryptoObject02.red == 2.23898168295e+33 || uCryptoObject02.red == 20475.1503906 || uCryptoObject02.red == 9.63810391228e+14 || uCryptoObject02.red == 0.0196637958288 || uCryptoObject02.red == 1.98044075881e+31 || uCryptoObject02.red == -4.82972004012e+28) ? uCryptoObject02.green : 0.0) + ((uCryptoObject02.blue == -1.10129611834e-19 || uCryptoObject02.blue == 3.77016838163e+25 || uCryptoObject02.blue == 5.30799127318e-07 || uCryptoObject02.blue == -1.8012761994e+30 || uCryptoObject02.blue == 0.0011479400564 || uCryptoObject02.blue == -5.49541752168e+20 || uCryptoObject02.blue == 5.48776709351e-25 || uCryptoObject02.blue == 0.0171870291233 || uCryptoObject02.blue == 5.37284898758 || uCryptoObject02.blue == -6.73303575979e-14 || uCryptoObject02.blue == -1.2614168576e+11 || uCryptoObject02.blue == 1.8551061694e-37 || uCryptoObject02.blue == -15.026216507 || uCryptoObject02.blue == 2.23898168295e+33 || uCryptoObject02.blue == 20475.1503906 || uCryptoObject02.blue == 9.63810391228e+14 || uCryptoObject02.blue == 0.0196637958288 || uCryptoObject02.blue == 1.98044075881e+31 || uCryptoObject02.blue == -4.82972004012e+28) ? uCryptoObject02.alpha : 0.0) + 0"
+  keyedName Lf_rearWheelRubber_05_GeoShape
+  previewExpression0 "((mantissa(abs(uCryptoObject00.red)) * 1 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 1 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 1 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 1 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoObject00.red)) * 16 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 16 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 16 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 16 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoObject00.red)) * 64 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 64 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 64 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 64 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoObject
+  in00 uCryptoObject00
+  in01 uCryptoObject01
+  in02 uCryptoObject02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+end_group
+Dot {
+ name Dot1
+ xpos -99
+ ypos -718
+}
+Group {
+ inputs 0
+ name REBUILD1
+ label "\[lindex \[split \[lindex \[split \[value input0.file] /] end] .] 0]\n\[lindex \[split \[lindex \[split \[value input1.file] /] end] .] 0]"
+ xpos 869
+ ypos -961
+ addUserKnob {20 rebuild}
+ addUserKnob {22 match l matchAovs T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.matchAovs()" +STARTLINE}
+ addUserKnob {20 info}
+ addUserKnob {22 addAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.addAssetGizmos(\"\")"}
+ addUserKnob {22 clearAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.clearAssetGizmos()"}
+ addUserKnob {22 forceAssetGizmos -STARTLINE T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.forceAddAssetGizmos()"}
+ addUserKnob {22 printCryptoInfo T "import mlPipeline\nfrom mlPipeline import ml_pipelineTools\nreload(mlPipeline.ml_pipelineTools)\nmlPipeline.ml_pipelineTools.showData()" +STARTLINE}
+ addUserKnob {43 assetList l "" +STARTLINE}
+ addUserKnob {43 existList l "" -STARTLINE}
+ addUserKnob {43 matList l "" -STARTLINE}
+ addUserKnob {26 spacer l "" -STARTLINE T "\t"}
+ addUserKnob {20 endGroup n -1}
+}
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoAsset/ctt0010_lighting_CHARS_FG_Util_uCryptoAsset_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 20
+  name uCryptoAsset
+  xpos -1265
+  ypos -1541
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e2ed180 [stack 0]
+ Cryptomatte {
+  name Cryptomatte3
+  xpos -1063
+  ypos -1511
+  matteOutput alpha
+  matteList ""
+  cryptoLayer uCryptoAsset
+  expression ""
+  keyedName ""
+  previewExpression0 "((mantissa(abs(uCryptoAsset00.red)) * 1 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 1 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 1 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 1 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoAsset00.red)) * 16 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 16 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 16 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 16 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoAsset00.red)) * 64 % 0.25) * uCryptoAsset00.green + (mantissa(abs(uCryptoAsset00.blue)) * 64 % 0.25) * uCryptoAsset00.alpha + (mantissa(abs(uCryptoAsset01.red)) * 64 % 0.25) * uCryptoAsset01.green + (mantissa(abs(uCryptoAsset01.blue)) * 64 % 0.25) * uCryptoAsset01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoAsset
+  in00 uCryptoAsset00
+  in01 uCryptoAsset01
+  in02 uCryptoAsset02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/diffuse_color/ctt0010_lighting_CHARS_FG_Beauty_diffuse_color_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 40
+  in_colorspace linear
+  out_colorspace linear
+  name diffuse_color
+  xpos -1756
+  ypos -771
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Clamp {
+  minimum 0.001
+  name Clamp1
+  xpos -1756
+  ypos -677
+ }
+ Input {
+  inputs 0
+  name lAll
+  xpos -1735
+  ypos -955
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoObject/ctt0010_lighting_CHARS_FG_Util_uCryptoObject_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 20
+  name uCryptoObject
+  xpos -1262
+  ypos -1236
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e0b2000 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uCryptoMaterial/ctt0010_lighting_CHARS_FG_Util_uCryptoMaterial_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 18
+  name uCryptoMaterial
+  xpos -1264
+  ypos -1390
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e0f7c00 [stack 0]
+push $N9e2ed180
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uuvDepth/ctt0010_lighting_CHARS_FG_Util_uuvDepth_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 13
+  in_colorspace linear
+  out_colorspace linear
+  name uuvDepth
+  xpos -1724
+  ypos -1969
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uPRef/ctt0010_lighting_CHARS_FG_Util_uPRef_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 12
+  in_colorspace linear
+  out_colorspace linear
+  name uPRef
+  xpos -1722
+  ypos -2134
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/P/ctt0010_lighting_CHARS_FG_Util_P_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 8
+  in_colorspace linear
+  out_colorspace linear
+  name P
+  xpos -1721
+  ypos -2287
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uPointCamera/ctt0010_lighting_CHARS_FG_Util_uPointCamera_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 14
+  in_colorspace linear
+  out_colorspace linear
+  name uPointCamera
+  xpos -1724
+  ypos -2445
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uNormalWorld/ctt0010_lighting_CHARS_FG_Util_uNormalWorld_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 12
+  in_colorspace linear
+  out_colorspace linear
+  name uNormalWorld
+  xpos -1721
+  ypos -2613
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Util/v015/exr/uNormalCamera/ctt0010_lighting_CHARS_FG_Util_uNormalCamera_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 14
+  in_colorspace linear
+  out_colorspace linear
+  name uNormalCamera
+  xpos -1724
+  ypos -2772
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+ Input {
+  inputs 0
+  name uBasic
+  xpos -1866
+  ypos -2871
+  number 1
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalCamera
+  name ShuffleCopy25
+  label "\[value out2]"
+  xpos -1866
+  ypos -2694
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uNormalWorld
+  name ShuffleCopy26
+  label "\[value out2]"
+  xpos -1866
+  ypos -2535
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointCamera
+  name ShuffleCopy28
+  label "\[value out2]"
+  xpos -1866
+  ypos -2367
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPointWorld
+  name ShuffleCopy29
+  label "\[value out2]"
+  xpos -1866
+  ypos -2207
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uPRef
+  name ShuffleCopy10
+  label "\[value out2]"
+  xpos -1866
+  ypos -2056
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 uUVI
+  name ShuffleCopy15
+  label "\[value out2]"
+  xpos -1866
+  ypos -1891
+ }
+ Unpremult {
+  channels all
+  name Unpremult4
+  xpos -1866
+  ypos -1671
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy2
+  xpos -1866
+  ypos -1470
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy1
+  xpos -1866
+  ypos -1319
+ }
+ Copy {
+  inputs 2
+  from0 -rgba.alpha
+  to0 -rgba.alpha
+  channels all
+  metainput All
+  rangeinput All
+  name Copy3
+  xpos -1866
+  ypos -1165
+ }
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  black red
+  white green
+  red2 blue
+  green2 alpha
+  out2 startRGBA
+  name ShuffleCopy4
+  label "\[value out2]"
+  xpos -1866
+  ypos -845
+ }
+ ShuffleCopy {
+  inputs 2
+  black red
+  white green
+  red2 blue
+  out none
+  out2 diffuse_color
+  name ShuffleCopy2
+  label "\[value out2]"
+  xpos -1866
+  ypos -647
+ }
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle8
+  label "\[value in]"
+  xpos -1866
+  ypos -524
+ }
+set N9e18d500 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  name Shuffle9
+  label "\[value in]"
+  xpos -1535
+  ypos -524
+ }
+set N9e18d180 [stack 0]
+ Shuffle {
+  in diffuse_color
+  in2 startRGBA
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name Shuffle11
+  label "\[value in]"
+  xpos -1009
+  ypos -524
+ }
+set N9e18ce00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle3
+  label "\[value in]"
+  xpos -584
+  ypos -524
+ }
+set N9e18ca80 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle4
+  label "\[value in]"
+  xpos -253
+  ypos -524
+ }
+set N9e18c700 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle10
+  label "\[value in]"
+  xpos 54
+  ypos -524
+ }
+set N9e18c380 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle12
+  label "\[value in]"
+  xpos 554
+  ypos -524
+ }
+set N9e18c000 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle13
+  label "\[value in]"
+  xpos 897
+  ypos -524
+ }
+set N9e485c00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle2
+  label "\[value in]"
+  xpos 1303
+  ypos -524
+ }
+set N9e485880 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle1
+  label "\[value in]"
+  xpos 1679
+  ypos -524
+ }
+set N9e485500 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle14
+  label "\[value in]"
+  xpos 2130
+  ypos -524
+ }
+set N9e485180 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle15
+  label "\[value in]"
+  xpos 2530
+  ypos -524
+ }
+set N9e484e00 [stack 0]
+ Shuffle {
+  in startRGBA
+  name Shuffle23
+  label "\[value in]"
+  xpos 2870
+  ypos -524
+ }
+set N9e484a80 [stack 0]
+ Shuffle {
+  in uPointCamera
+  in2 startRGBA
+  red blue
+  green blue
+  name Shuffle17
+  label "\[value in]"
+  xpos 3260
+  ypos -524
+ }
+ Unpremult {
+  name Shuffle9_unpremult
+  xpos 3260
+  ypos -473
+ }
+ ml_AtmosControl {
+  name ml_AtmosControl
+  xpos 3260
+  ypos -362
+  whitepoint -2000
+  atmos_Grade_gamma 0.84
+ }
+ NoOp {
+  name atmos_OUt
+  note_font_size 20
+  xpos 3260
+  ypos 498
+ }
+push $N9e484a80
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_diffuse/ctt0010_lighting_CHARS_FG_Beauty_direct_diffuse_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name direct_diffuse
+  xpos -1756
+  ypos -495
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e4bca80 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_diffuse/ctt0010_lighting_CHARS_FG_Beauty_indirect_diffuse_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_diffuse
+  xpos -1402
+  ypos -490
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e4bc700 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_backlight/ctt0010_lighting_CHARS_FG_Beauty_direct_backlight_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 35
+  in_colorspace linear
+  out_colorspace linear
+  name direct_backlight
+  xpos -474
+  ypos -493
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e4bc380 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_backlight/ctt0010_lighting_CHARS_FG_Beauty_indirect_backlight_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 33
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_backlight
+  xpos -120
+  ypos -490
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e4bc000 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/sss/ctt0010_lighting_CHARS_FG_Beauty_sss_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 30
+  in_colorspace linear
+  out_colorspace linear
+  name sss
+  xpos 164
+  ypos -500
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e511c00 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_specular/ctt0010_lighting_CHARS_FG_Beauty_direct_specular_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 41
+  in_colorspace linear
+  out_colorspace linear
+  name direct_specular
+  xpos 652
+  ypos -503
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e511880 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/direct_specular_2/ctt0010_lighting_CHARS_FG_Beauty_direct_specular_2_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 27
+  in_colorspace linear
+  out_colorspace linear
+  name direct_specular_2
+  xpos 762
+  ypos -485
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e511500 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_specular/ctt0010_lighting_CHARS_FG_Beauty_indirect_specular_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 42
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_specular
+  xpos 998
+  ypos -485
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e511180 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/indirect_specular_2/ctt0010_lighting_CHARS_FG_Beauty_indirect_specular_2_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 29
+  in_colorspace linear
+  out_colorspace linear
+  name indirect_specular_2
+  xpos 1108
+  ypos -484
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e510e00 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/reflection/ctt0010_lighting_CHARS_FG_Beauty_reflection_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 23
+  in_colorspace linear
+  out_colorspace linear
+  name reflection
+  xpos 1403
+  ypos -477
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e510a80 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/sheen/ctt0010_lighting_CHARS_FG_Beauty_sheen_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 21
+  in_colorspace linear
+  out_colorspace linear
+  name sheen
+  xpos 1779
+  ypos -477
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e510700 [stack 0]
+push 0
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/refraction/ctt0010_lighting_CHARS_FG_Beauty_refraction_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 36
+  in_colorspace linear
+  out_colorspace linear
+  name refraction
+  xpos 2303
+  ypos -491
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e510380 [stack 0]
+ Read {
+  inputs 0
+  file P:/projects/clashtownhall12_31633P/sequences/clashTownhallTwelve/ctt0010/lighting/output/render/lighting_CHARS_FG_Beauty/v015/exr/emission/ctt0010_lighting_CHARS_FG_Beauty_emission_v015.%04d.exr
+  format "960 540 0 0 960 540 1 "
+  first 1000
+  last 1073
+  origfirst 1000
+  origlast 1073
+  origset true
+  version 26
+  in_colorspace linear
+  out_colorspace linear
+  name emission
+  xpos 2661
+  ypos -492
+  addUserKnob {20 submit_tab l Submit}
+  addUserKnob {4 submission_preset l "Submission Preset" +DISABLED M {"to-qt\t1/4 Res Quicktime" "dailies\tDailies" "test\tTest" "test-rvio\tTest RVIO"}}
+  submission_preset dailies
+  addUserKnob {22 submit_gui l "Submit (GUI)" -STARTLINE +DISABLED T NodeSubmission.do_submission_gui()}
+  addUserKnob {22 submit l Submit -STARTLINE +DISABLED T NodeSubmission.do_submission()}
+  addUserKnob {6 pass_frange l "Pass frame range to transgen" +DISABLED +STARTLINE}
+  addUserKnob {43 description l Description +DISABLED}
+  description "Polaris could not be loaded."
+  addUserKnob {4 qube_priority l "Qube Priority" M {lowest low normal high highest}}
+  qube_priority normal
+ }
+set N9e510000 [stack 0]
+ Merge2 {
+  inputs 13+1
+  name CombineAll
+  xpos 3047
+  ypos -470
+  hide_input true
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  xpos 3047
+  ypos -382
+ }
+push $N9e484a80
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge11
+  xpos 2870
+  ypos -382
+ }
+ NoOp {
+  name remainder_OUT
+  note_font_size 20
+  xpos 2870
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov remainder
+ }
+push $N9e510000
+push $N9e484e00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy3
+  xpos 2530
+  ypos -408
+ }
+ Unpremult {
+  name Shuffle8_unpremult
+  xpos 2530
+  ypos -382
+ }
+ NoOp {
+  name emission_OUT
+  note_font_size 20
+  xpos 2530
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov emission
+ }
+push $N9e510380
+push $N9e485180
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy5
+  xpos 2130
+  ypos -407
+ }
+ NoOp {
+  name refr_OUT
+  note_font_size 20
+  xpos 2130
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov refr
+ }
+push $N9e510700
+push $N9e485500
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  out2 sheen
+  name ShuffleCopy11
+  xpos 1679
+  ypos -391
+ }
+ Unpremult {
+  name Shuffle6_unpremult1
+  xpos 1679
+  ypos -365
+ }
+ NoOp {
+  name sheen_OUT
+  note_font_size 20
+  xpos 1679
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov sheen
+ }
+push $N9e510a80
+push $N9e485880
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy12
+  xpos 1303
+  ypos -391
+ }
+ Unpremult {
+  name Shuffle6_unpremult2
+  xpos 1303
+  ypos -365
+ }
+ NoOp {
+  name reflection_OUT
+  note_font_size 20
+  xpos 1303
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov reflection
+ }
+push $N9e510e00
+push $N9e511180
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name Merge7
+  xpos 998
+  ypos -360
+ }
+push $N9e485c00
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy6
+  xpos 897
+  ypos -360
+ }
+ Unpremult {
+  name Shuffle6_unpremult
+  xpos 897
+  ypos -334
+ }
+ Dot {
+  name Dot6
+  xpos 931
+  ypos -231
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $N9e511500
+push $N9e511880
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name Merge6
+  xpos 652
+  ypos -354
+ }
+push $N9e18c000
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy7
+  xpos 554
+  ypos -354
+ }
+ Unpremult {
+  name Shuffle5_unpremult
+  xpos 554
+  ypos -270
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge spec
+  name Merge2
+  xpos 554
+  ypos -235
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+ NoOp {
+  name spec_OUT
+  note_font_size 20
+  xpos 554
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov spec
+ }
+push $N9e511c00
+push $N9e18c380
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy8
+  xpos 54
+  ypos -416
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 54
+  ypos -392
+ }
+ NoOp {
+  name sss_OUT
+  note_font_size 20
+  xpos 54
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov sss
+ }
+push $N9e4bc000
+push $N9e18c700
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy14
+  xpos -253
+  ypos -406
+ }
+ Unpremult {
+  name Unpremult2
+  xpos -253
+  ypos -371
+ }
+ Dot {
+  name Dot5
+  xpos -219
+  ypos -215
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+push $N9e4bc380
+push $N9e18ca80
+ ShuffleCopy {
+  inputs 2
+  red red
+  green green
+  blue blue
+  alpha alpha2
+  black red
+  white green
+  red2 blue
+  name ShuffleCopy13
+  xpos -584
+  ypos -409
+ }
+ Unpremult {
+  name Unpremult3
+  xpos -584
+  ypos -360
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge backlight
+  name Merge1
+  xpos -584
+  ypos -219
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+ NoOp {
+  name backlight_OUT
+  note_font_size 20
+  xpos -584
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov backlight
+ }
+push $N9e18ce00
+ Unpremult {
+  name Shuffle4_unpremult
+  xpos -1009
+  ypos -428
+ }
+ NoOp {
+  name color_OUT
+  note_font_size 20
+  xpos -1009
+  ypos 498
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $N9e4bc700
+push $N9e18d180
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  also_merge diffuse
+  name Merge3
+  xpos -1535
+  ypos -406
+ }
+ Dot {
+  name Dot2
+  xpos -1501
+  ypos -218
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+push $N9e4bca80
+push $N9e18d500
+ Merge2 {
+  inputs 2
+  operation divide
+  output rgb
+  name Merge4
+  xpos -1866
+  ypos -409
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  also_merge {diffuse.red diffuse.green diffuse.blue -diffuse.alpha}
+  name Merge5
+  xpos -1866
+  ypos -222
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ NoOp {
+  name lighting_OUT
+  note_font_size 20
+  xpos -1866
+  ypos 484
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Dot {
+  name Dot1
+  xpos -1832
+  ypos 536
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  output rgb
+  also_merge diffuse
+  name Merge8
+  xpos -1009
+  ypos 532
+  addUserKnob {20 User}
+  addUserKnob {1 aov}
+  aov diffuseLighting
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name backlight_MERGE
+  xpos -584
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name sss_MERGE
+  xpos 54
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name spec_MERGE
+  xpos 554
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name reflection_MERGE
+  xpos 1303
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name sheen_MERGE
+  xpos 1679
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name refr_MERGE
+  xpos 2130
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name emission_MERGE
+  xpos 2530
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name remainder_MERGE
+  xpos 2870
+  ypos 532
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  output rgb
+  name atmos_MERGE
+  xpos 3260
+  ypos 532
+  disable true
+ }
+ Reformat {
+  name Reformat1
+  xpos 3268
+  ypos 1236
+ }
+ Premult {
+  name rebuildPremult
+  xpos 3268
+  ypos 1262
+ }
+ Remove {
+  operation keep
+  channels rgba
+  channels2 uPointWorld
+  channels3 uNormalWorld
+  channels4 uPointCamera
+  name Remove1
+  xpos 3268
+  ypos 1288
+  disable true
+ }
+ Output {
+  name Output1
+  xpos 3268
+  ypos 1314
+ }
+push $N9e0f7c00
+ Cryptomatte {
+  name Cryptomatte1
+  xpos -1049
+  ypos -1360
+  matteOutput alpha
+  matteList "chrome2_SHDSG, coolerChrome_sg, flatterMetal_SHDSG"
+  cryptoLayer uCryptoMaterial
+  expression "((uCryptoMaterial00.red == 3.72321380837e-07 || uCryptoMaterial00.red == -2.18987693305e-38 || uCryptoMaterial00.red == -1.3232663672e+18) ? uCryptoMaterial00.green : 0.0) + ((uCryptoMaterial00.blue == 3.72321380837e-07 || uCryptoMaterial00.blue == -2.18987693305e-38 || uCryptoMaterial00.blue == -1.3232663672e+18) ? uCryptoMaterial00.alpha : 0.0) + ((uCryptoMaterial01.red == 3.72321380837e-07 || uCryptoMaterial01.red == -2.18987693305e-38 || uCryptoMaterial01.red == -1.3232663672e+18) ? uCryptoMaterial01.green : 0.0) + ((uCryptoMaterial01.blue == 3.72321380837e-07 || uCryptoMaterial01.blue == -2.18987693305e-38 || uCryptoMaterial01.blue == -1.3232663672e+18) ? uCryptoMaterial01.alpha : 0.0) + ((uCryptoMaterial02.red == 3.72321380837e-07 || uCryptoMaterial02.red == -2.18987693305e-38 || uCryptoMaterial02.red == -1.3232663672e+18) ? uCryptoMaterial02.green : 0.0) + ((uCryptoMaterial02.blue == 3.72321380837e-07 || uCryptoMaterial02.blue == -2.18987693305e-38 || uCryptoMaterial02.blue == -1.3232663672e+18) ? uCryptoMaterial02.alpha : 0.0) + 0"
+  keyedName coolerChrome_sg
+  previewExpression0 "((mantissa(abs(uCryptoMaterial00.red)) * 1 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 1 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 1 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 1 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoMaterial00.red)) * 16 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 16 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 16 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 16 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoMaterial00.red)) * 64 % 0.25) * uCryptoMaterial00.green + (mantissa(abs(uCryptoMaterial00.blue)) * 64 % 0.25) * uCryptoMaterial00.alpha + (mantissa(abs(uCryptoMaterial01.red)) * 64 % 0.25) * uCryptoMaterial01.green + (mantissa(abs(uCryptoMaterial01.blue)) * 64 % 0.25) * uCryptoMaterial01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoMaterial
+  in00 uCryptoMaterial00
+  in01 uCryptoMaterial01
+  in02 uCryptoMaterial02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+push $N9e0b2000
+ Cryptomatte {
+  name Cryptomatte2
+  xpos -1052
+  ypos -1206
+  matteOutput alpha
+  matteList "chrome_GeoShape, frontlight_glass02_Geo1Shape, frontlight_glass02_GeoShape, Lf_frontWheelRubber_01_Geo01Shape, Lf_frontWheelRubber_01_GeoShape, Lf_frontWheelRubber_02_Geo01Shape, Lf_frontWheelRubber_02_GeoShape, Lf_frontWheelRubber_03_Geo01Shape, Lf_frontWheelRubber_04_Geo01Shape, Lf_frontWheelRubber_04_GeoShape, Lf_frontWheelRubber_05_GeoShape, Lf_frontWheelRubber_06_Geo01Shape, Lf_frontWheelRubber_06_GeoShape, Lf_rearWheelRubber_01_GeoShape, Lf_rearWheelRubber_02_GeoShape, Lf_rearWheelRubber_04_GeoShape, Lf_rearWheelRubber_05_GeoShape, Lf_rearWheelRubber_06_GeoShape, Rt_handle_GeoShape"
+  cryptoLayer uCryptoObject
+  expression "((uCryptoObject00.red == -1.10129611834e-19 || uCryptoObject00.red == 3.77016838163e+25 || uCryptoObject00.red == 5.30799127318e-07 || uCryptoObject00.red == -1.8012761994e+30 || uCryptoObject00.red == 0.0011479400564 || uCryptoObject00.red == -5.49541752168e+20 || uCryptoObject00.red == 5.48776709351e-25 || uCryptoObject00.red == 0.0171870291233 || uCryptoObject00.red == 5.37284898758 || uCryptoObject00.red == -6.73303575979e-14 || uCryptoObject00.red == -1.2614168576e+11 || uCryptoObject00.red == 1.8551061694e-37 || uCryptoObject00.red == -15.026216507 || uCryptoObject00.red == 2.23898168295e+33 || uCryptoObject00.red == 20475.1503906 || uCryptoObject00.red == 9.63810391228e+14 || uCryptoObject00.red == 0.0196637958288 || uCryptoObject00.red == 1.98044075881e+31 || uCryptoObject00.red == -4.82972004012e+28) ? uCryptoObject00.green : 0.0) + ((uCryptoObject00.blue == -1.10129611834e-19 || uCryptoObject00.blue == 3.77016838163e+25 || uCryptoObject00.blue == 5.30799127318e-07 || uCryptoObject00.blue == -1.8012761994e+30 || uCryptoObject00.blue == 0.0011479400564 || uCryptoObject00.blue == -5.49541752168e+20 || uCryptoObject00.blue == 5.48776709351e-25 || uCryptoObject00.blue == 0.0171870291233 || uCryptoObject00.blue == 5.37284898758 || uCryptoObject00.blue == -6.73303575979e-14 || uCryptoObject00.blue == -1.2614168576e+11 || uCryptoObject00.blue == 1.8551061694e-37 || uCryptoObject00.blue == -15.026216507 || uCryptoObject00.blue == 2.23898168295e+33 || uCryptoObject00.blue == 20475.1503906 || uCryptoObject00.blue == 9.63810391228e+14 || uCryptoObject00.blue == 0.0196637958288 || uCryptoObject00.blue == 1.98044075881e+31 || uCryptoObject00.blue == -4.82972004012e+28) ? uCryptoObject00.alpha : 0.0) + ((uCryptoObject01.red == -1.10129611834e-19 || uCryptoObject01.red == 3.77016838163e+25 || uCryptoObject01.red == 5.30799127318e-07 || uCryptoObject01.red == -1.8012761994e+30 || uCryptoObject01.red == 0.0011479400564 || uCryptoObject01.red == -5.49541752168e+20 || uCryptoObject01.red == 5.48776709351e-25 || uCryptoObject01.red == 0.0171870291233 || uCryptoObject01.red == 5.37284898758 || uCryptoObject01.red == -6.73303575979e-14 || uCryptoObject01.red == -1.2614168576e+11 || uCryptoObject01.red == 1.8551061694e-37 || uCryptoObject01.red == -15.026216507 || uCryptoObject01.red == 2.23898168295e+33 || uCryptoObject01.red == 20475.1503906 || uCryptoObject01.red == 9.63810391228e+14 || uCryptoObject01.red == 0.0196637958288 || uCryptoObject01.red == 1.98044075881e+31 || uCryptoObject01.red == -4.82972004012e+28) ? uCryptoObject01.green : 0.0) + ((uCryptoObject01.blue == -1.10129611834e-19 || uCryptoObject01.blue == 3.77016838163e+25 || uCryptoObject01.blue == 5.30799127318e-07 || uCryptoObject01.blue == -1.8012761994e+30 || uCryptoObject01.blue == 0.0011479400564 || uCryptoObject01.blue == -5.49541752168e+20 || uCryptoObject01.blue == 5.48776709351e-25 || uCryptoObject01.blue == 0.0171870291233 || uCryptoObject01.blue == 5.37284898758 || uCryptoObject01.blue == -6.73303575979e-14 || uCryptoObject01.blue == -1.2614168576e+11 || uCryptoObject01.blue == 1.8551061694e-37 || uCryptoObject01.blue == -15.026216507 || uCryptoObject01.blue == 2.23898168295e+33 || uCryptoObject01.blue == 20475.1503906 || uCryptoObject01.blue == 9.63810391228e+14 || uCryptoObject01.blue == 0.0196637958288 || uCryptoObject01.blue == 1.98044075881e+31 || uCryptoObject01.blue == -4.82972004012e+28) ? uCryptoObject01.alpha : 0.0) + ((uCryptoObject02.red == -1.10129611834e-19 || uCryptoObject02.red == 3.77016838163e+25 || uCryptoObject02.red == 5.30799127318e-07 || uCryptoObject02.red == -1.8012761994e+30 || uCryptoObject02.red == 0.0011479400564 || uCryptoObject02.red == -5.49541752168e+20 || uCryptoObject02.red == 5.48776709351e-25 || uCryptoObject02.red == 0.0171870291233 || uCryptoObject02.red == 5.37284898758 || uCryptoObject02.red == -6.73303575979e-14 || uCryptoObject02.red == -1.2614168576e+11 || uCryptoObject02.red == 1.8551061694e-37 || uCryptoObject02.red == -15.026216507 || uCryptoObject02.red == 2.23898168295e+33 || uCryptoObject02.red == 20475.1503906 || uCryptoObject02.red == 9.63810391228e+14 || uCryptoObject02.red == 0.0196637958288 || uCryptoObject02.red == 1.98044075881e+31 || uCryptoObject02.red == -4.82972004012e+28) ? uCryptoObject02.green : 0.0) + ((uCryptoObject02.blue == -1.10129611834e-19 || uCryptoObject02.blue == 3.77016838163e+25 || uCryptoObject02.blue == 5.30799127318e-07 || uCryptoObject02.blue == -1.8012761994e+30 || uCryptoObject02.blue == 0.0011479400564 || uCryptoObject02.blue == -5.49541752168e+20 || uCryptoObject02.blue == 5.48776709351e-25 || uCryptoObject02.blue == 0.0171870291233 || uCryptoObject02.blue == 5.37284898758 || uCryptoObject02.blue == -6.73303575979e-14 || uCryptoObject02.blue == -1.2614168576e+11 || uCryptoObject02.blue == 1.8551061694e-37 || uCryptoObject02.blue == -15.026216507 || uCryptoObject02.blue == 2.23898168295e+33 || uCryptoObject02.blue == 20475.1503906 || uCryptoObject02.blue == 9.63810391228e+14 || uCryptoObject02.blue == 0.0196637958288 || uCryptoObject02.blue == 1.98044075881e+31 || uCryptoObject02.blue == -4.82972004012e+28) ? uCryptoObject02.alpha : 0.0) + 0"
+  keyedName Lf_rearWheelRubber_05_GeoShape
+  previewExpression0 "((mantissa(abs(uCryptoObject00.red)) * 1 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 1 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 1 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 1 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression1 "((mantissa(abs(uCryptoObject00.red)) * 16 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 16 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 16 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 16 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression2 "((mantissa(abs(uCryptoObject00.red)) * 64 % 0.25) * uCryptoObject00.green + (mantissa(abs(uCryptoObject00.blue)) * 64 % 0.25) * uCryptoObject00.alpha + (mantissa(abs(uCryptoObject01.red)) * 64 % 0.25) * uCryptoObject01.green + (mantissa(abs(uCryptoObject01.blue)) * 64 % 0.25) * uCryptoObject01.alpha)"
+  previewExpression3 ""
+  previewChannel uCryptoObject
+  in00 uCryptoObject00
+  in01 uCryptoObject01
+  in02 uCryptoObject02
+  in03 none
+  in04 none
+  in05 none
+  in06 none
+  in07 none
+ }
+end_group
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 869
+ ypos -722
+}
+dobbsMergeMod {
+ inputs 2
+ name dobbsMergeMod1
+ xpos 869
+ ypos -182
+ WrapFlare_size 7.6
+ WrapAllMult 1
+ iColor_amount 0.17
+ ColorBleedMult 1
+}
+Merge2 {
+ inputs 2
+ operation under
+ name Merge2
+ xpos 869
+ ypos -75
+}
+Crop {
+ box {0 0 1920 1080}
+ name Crop1
+ xpos 869
+ ypos 95
+}
+Remove {
+ operation keep
+ channels rgba
+ name Remove1
+ xpos 869
+ ypos 121
+}
+HueCorrect {
+ hue {sat {curve 0.9838235378 0.9343284369 0.9069652557 1 0.9838235378}
+   lum {}
+   red {}
+   green {}
+   blue {}
+   r_sup {}
+   g_sup {}
+   b_sup {}
+   sat_thrsh {}}
+ mix 0.75
+ name HueCorrect2
+ xpos 869
+ ypos 234
+}
+Grade {
+ white 1.2
+ gamma 0.85
+ black_clamp false
+ name Grade1
+ xpos 869
+ ypos 260
+}
+ColorCorrect {
+ highlights.gain 1.15
+ name ColorCorrect1
+ xpos 869
+ ypos 286
+}
+SoftClip {
+ conversion "logarithmic compress"
+ softclip_min 0
+ name SoftClip1
+ xpos 869
+ ypos 312
+}
+LumaGrain {
+ name LumaGrain1
+ xpos 869
+ ypos 338
+ mix 0.3
+}

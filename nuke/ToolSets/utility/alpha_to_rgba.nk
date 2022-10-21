@@ -1,0 +1,137 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name alpha_to_rgba
+ tile_color 0xaadfffff
+ selected true
+ xpos -311
+ ypos -154
+}
+ Input {
+  inputs 0
+  name a
+  xpos -289
+  ypos 475
+  number 3
+ }
+ Dot {
+  name Dot2
+  xpos -255
+  ypos 511
+ }
+ Shuffle {
+  red black
+  green black
+  blue black
+  name Shuffle1
+  tile_color 0xaaaaaaff
+  label "\[value in]"
+  xpos -289
+  ypos 598
+ }
+ Input {
+  inputs 0
+  name b
+  xpos -399
+  ypos 474
+  number 2
+ }
+ Dot {
+  name Dot9
+  xpos -365
+  ypos 514
+ }
+ Shuffle {
+  red black
+  green black
+  blue alpha
+  alpha black
+  name Shuffle5
+  tile_color 0x9fffff
+  label "\[value in]"
+  xpos -399
+  ypos 598
+ }
+ Input {
+  inputs 0
+  name g
+  xpos -520
+  ypos 473
+  number 1
+ }
+ Dot {
+  name Dot8
+  xpos -486
+  ypos 514
+ }
+ Shuffle {
+  red black
+  green alpha
+  blue black
+  alpha black
+  name Shuffle4
+  tile_color 0x55ff7fff
+  label "\[value in]"
+  xpos -520
+  ypos 596
+ }
+ Input {
+  inputs 0
+  name r
+  xpos -630
+  ypos 472
+ }
+ Dot {
+  name Dot7
+  xpos -596
+  ypos 514
+ }
+ Shuffle {
+  red alpha
+  green black
+  blue black
+  alpha black
+  name Shuffle3
+  tile_color 0xff5555ff
+  label "\[value in]"
+  xpos -630
+  ypos 599
+ }
+ Dot {
+  name Dot1
+  xpos -596
+  ypos 707
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge6
+  xpos -520
+  ypos 703
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge8
+  xpos -399
+  ypos 703
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge1
+  xpos -289
+  ypos 703
+ }
+ Dot {
+  name Dot10
+  xpos -255
+  ypos 825
+ }
+ Output {
+  name Output1
+  xpos -289
+  ypos 926
+ }
+end_group

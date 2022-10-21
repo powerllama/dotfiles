@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1920" h="1160" screen="0">
+        <splitter orientation="2">
+            <split size="671"/>
+            <splitter orientation="1">
+                <split size="886"/>
+                <splitter orientation="2">
+                    <split size="357"/>
+                    <dock id="" activePageId="uk.co.thefoundry.project.2">
+                        <page id="uk.co.thefoundry.project.2" layout="splitter(160,700)"/>
+                        <page id="uk.co.thefoundry.project.1" layout="splitter(160,470)"/>
+                        <page id="Properties.1"/>
+                    </dock>
+                    <split size="310"/>
+                    <dock id="" activePageId="psyop.Shotgun_Spreadsheet.1" focus="true">
+                        <page id="psyop.Shotgun_Spreadsheet.1"/>
+                        <page id="uk.co.thefoundry.spreadsheetview.1"/>
+                    </dock>
+                </splitter>
+                <split size="1014"/>
+                <splitter orientation="2">
+                    <split size="671"/>
+                    <dock id="" activePageId="uk.co.thefoundry.sequenceviewer.1">
+                        <page id="uk.co.thefoundry.sequenceviewer.1"/>
+                        <page id="uk.co.thefoundry.exportqueue.1"/>
+                    </dock>
+                </splitter>
+            </splitter>
+            <split size="423"/>
+            <splitter orientation="1">
+                <split size="1904"/>
+                <dock id="" activePageId="uk.co.thefoundry.timeline.1">
+                    <page id="uk.co.thefoundry.timeline.1" layout="splitter(559,1341)"/>
+                </dock>
+            </splitter>
+        </splitter>
+    </window>
+</layout>

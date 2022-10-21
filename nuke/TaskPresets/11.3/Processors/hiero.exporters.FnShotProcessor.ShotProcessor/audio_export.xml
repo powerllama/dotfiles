@@ -1,0 +1,21 @@
+<root presetname="audio_export" tasktype="hiero.exporters.FnShotProcessor.ShotProcessor">
+    <startFrameIndex valuetype="int">1001</startFrameIndex>
+    <exportRoot valuetype="str">{projectroot}/production/vendor_in/BarkingOwl/2019-01-03/Cricket - TAX TV HEROS</exportRoot>
+    <versionIndex valuetype="int">1</versionIndex>
+    <cutUseHandles valuetype="bool">False</cutUseHandles>
+    <versionPadding valuetype="int">2</versionPadding>
+    <exportTemplate valuetype="list">
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">{filename}</SequenceItem>
+            <SequenceItem valuetype="hiero.exporters.FnAudioExportTask.AudioExportPreset">
+                <root presetname="hiero.exporters.FnAudioExportTask.AudioExportTask" tasktype="hiero.exporters.FnAudioExportTask.AudioExportTask" />
+            </SequenceItem>
+        </SequenceItem>
+    </exportTemplate>
+    <excludeTags valuetype="list" />
+    <includeTags valuetype="list" />
+    <includeRetimes valuetype="bool">False</includeRetimes>
+    <startFrameSource valuetype="str">Source</startFrameSource>
+    <cutLength valuetype="bool">False</cutLength>
+    <cutHandles valuetype="int">12</cutHandles>
+</root>

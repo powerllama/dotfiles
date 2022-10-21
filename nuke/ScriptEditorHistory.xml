@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><script>nodes = nuke.selectedNodes()
+
+for node in nodes:
+    node['frame'].setValue('1001')
+    node['frame_mode'].setValue('start at')
+    node['colorspace'].setValue(89)
+</script>

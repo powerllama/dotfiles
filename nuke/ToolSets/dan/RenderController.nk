@@ -1,0 +1,15 @@
+set cut_paste_input [stack 0]
+version 13.0 v4
+push $cut_paste_input
+NoOp {
+ name RenderController
+ note_font_size 40
+ selected true
+ xpos -1326
+ ypos 7225
+ addUserKnob {20 User}
+ addUserKnob {6 OZ_Def l "Optical Z-Defocus" t "Use Expression:\n\n1-RenderController.OZ_Def" -STARTLINE}
+ addUserKnob {6 CardExtrude l "Card Extrusion" t "On Scene node use Expression:\n\n1-RenderController.CardExtrude" -STARTLINE}
+ addUserKnob {3 ScanMulti l "Scanline Render Multisample"}
+ ScanMulti 1
+}

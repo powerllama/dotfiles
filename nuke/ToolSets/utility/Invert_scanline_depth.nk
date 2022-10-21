@@ -1,0 +1,10 @@
+set cut_paste_input [stack 0]
+version 13.0 v4
+push $cut_paste_input
+Expression {
+ channel0 depth
+ expr0 z==0?0:1/z
+ name invert_nuke_depth
+ selected true
+ xpos 378
+}

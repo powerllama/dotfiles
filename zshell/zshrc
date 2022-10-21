@@ -1,0 +1,32 @@
+# zshrc - abrown
+
+# shell options
+setopt autocd 			# changes directory when path entered without cd
+setopt no_case_glob 		# makes globbing (searching) case-insensitive
+setopt extended_history
+setopt CORRECT			# Correct commands
+setopt CORRECT_ALL		# Correct all arguments
+
+# history options
+setopt SHARE_HISTORY		# share history across multiple sessions
+setopt HIST_EXPIRE_DUPS_FIRST	# expire duplicates first
+setopt HIST_IGNORE_DUPS		# do not store duplications
+setopt HIST_FIND_NO_DUPS	# ignore duplicates when searching
+setopt HIST_REDUCE_BLANKS	# removes blank lines from history
+
+# aliases
+alias ll='ls -al'
+alias nuke="/Applications/Nuke13.2v4/Nuke13.2v4.app/Contents/MacOS/Nuke13.2"
+PROMPT='%B%F{240}%3~%f%b %# '
+alias nassh='ssh ds920'
+alias pcoip='/Applications/PCoIPClient.app/Contents/MacOS/PCoIPClient -s 0 -l 2 -b us-west-2.nexodus.cloud --username abrown'
+
+# suffix aliases
+alias -s txt="subl"
+alias -s py="subl"
+
+# key bindings
+# pressing up or down after typing uses the text provided to search for prev commands
+bindkey $'^[[A' up-line-or-search	# up arrow
+bindkey $'^[[B' down-line-or-search	# down arrow
+

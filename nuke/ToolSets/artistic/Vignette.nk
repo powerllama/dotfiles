@@ -1,0 +1,90 @@
+set cut_paste_input [stack 0]
+version 11.3 v6
+push $cut_paste_input
+Group {
+ name Vignette
+ tile_color 0x7093ffff
+ selected true
+ xpos 387
+ ypos 1343
+ addUserKnob {20 User}
+ addUserKnob {26 text l "Vignette size"}
+ addUserKnob {41 area l "Radial Size" T Radial1.area}
+ addUserKnob {41 softness T Radial1.softness}
+ addUserKnob {41 size l "Blur size" T Blur1.size}
+ addUserKnob {26 text_1 l "Vignette Grade"}
+ addUserKnob {41 white l gain T Grade3.white}
+ addUserKnob {41 gamma T Grade3.gamma}
+ addUserKnob {41 mix T Grade3.mix}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 boolean l "View vignette" +STARTLINE}
+ addUserKnob {6 boolean_1 l "Mask vignette" +STARTLINE}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos 859
+  ypos 189
+  number 1
+ }
+ Radial {
+  inputs 0
+  invert true
+  area {-302 -224 2222 1304}
+  softness 0.285
+  name Radial1
+  xpos 640
+  ypos 182
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge1
+  xpos 640
+  ypos 217
+  disable {{"boolean_1 ? 0 : 1"}}
+ }
+ Blur {
+  size 46
+  name Blur1
+  label "size: \[value size]"
+  xpos 640
+  ypos 258
+ }
+set Ne1fe5c00 [stack 0]
+push $Ne1fe5c00
+ Input {
+  inputs 0
+  name Input1
+  xpos 412
+  ypos 166
+ }
+ Grade {
+  inputs 1+1
+  white 0.88
+  gamma 0.75
+  black_clamp false
+  name Grade3
+  xpos 412
+  ypos 271
+ }
+ Switch {
+  inputs 2
+  which {{boolean}}
+  name Switch1
+  xpos 412
+  ypos 332
+ }
+set Ne1fe5000 [stack 0]
+ Output {
+  name Output1
+  xpos 412
+  ypos 371
+ }
+push $Ne1fe5000
+ Output {
+  name Output2
+  xpos 635
+  ypos 372
+ }
+end_group

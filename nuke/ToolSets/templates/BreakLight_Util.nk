@@ -1,0 +1,294 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name BreakLight_Util1
+ tile_color 0x2c2c36ff
+ label "<H2>\[join \[lrange \[split \[ basename \[metadata input/filename] ] \"_\"] 2 3] \"_\"]"
+ note_font Verdana
+ note_font_color 0xffffe1ff
+ selected true
+ xpos -448
+ ypos 504
+ addUserKnob {20 UtilGroup}
+ addUserKnob {22 buildUtil l "Build Util" T "from psynuke_custom.BreakLight import buildUtil\nreload(buildUtil)\nbuildUtil.buildUtil()" +STARTLINE}
+}
+ BackdropNode {
+  inputs 0
+  name Crypto_Backdrop
+  tile_color 0x2d5f64ff
+  note_font_size 42
+  xpos 1111
+  ypos -1543
+  bdwidth 480
+  bdheight 650
+ }
+ BackdropNode {
+  inputs 0
+  name Util_Backdrop
+  tile_color 0x4c4c43ff
+  note_font_size 42
+  xpos 241
+  ypos -1543
+  bdwidth 617
+  bdheight 2925
+ }
+ Input {
+  inputs 0
+  name UtilityBeauty
+  note_font "MS Shell Dlg 2 Bold Bold Bold Bold"
+  note_font_size 45
+  xpos 350
+  ypos -1820
+ }
+ Dot {
+  name ShuffleInDot
+  xpos 384
+  ypos -1493
+ }
+set Nff028a80 [stack 0]
+ Dot {
+  name Dot3
+  xpos 88
+  ypos -1493
+ }
+ Dot {
+  name Dot1
+  xpos 88
+  ypos 2393
+ }
+push $Nff028a80
+ Dot {
+  name ShuffleOutDot
+  xpos 384
+  ypos 2023
+ }
+ Dot {
+  name Dot4
+  xpos 981
+  ypos 2023
+ }
+ Dot {
+  name toCrypto
+  xpos 981
+  ypos -1416
+ }
+ Dot {
+  name toBBox
+  xpos 1184
+  ypos 2303
+ }
+ Dot {
+  name Dot5
+  xpos 384
+  ypos 2303
+ }
+ CopyBBox {
+  inputs 2
+  name utilCopyBBox
+  xpos 350
+  ypos 2389
+ }
+ Output {
+  name Output
+  note_font "Verdana Bold Bold Bold Bold"
+  note_font_size 45
+  xpos 350
+  ypos 2518
+ }
+end_group
+push 0
+Group {
+ inputs 2
+ name BreakLight_AOV1
+ tile_color 0x5e7c8cff
+ label "<center><b><font size=\"10\" align=\"center\">\[if \{\[exists input0]\} \{return \[knob input0.name]\} \{return \" \"\}]</font>\n<font size=\"4\" color=\"#adadad\">\[lrange \[split \[lrange \[split \[ basename \[metadata input/filename] ] \".\"] 0 0] '_'] end end]</font></b>\n\n<font size=\"3\" color=\"#000000\">\[if \{\[value beauty] == \"On\"\} \{return \"Bypass AOVs\"\} \{return \[string map \{\", \" <br>\} \[knob extracted]] \}]</font>\n<font size=\"3\" color=\"#adadad\">\[if \{\[value premultOut] == \"On\"\} \{return \"Premultiplied\"\} \{return \"Unpremultiplied\"\}]\nExposure = \[value OverallMult.white]</font>\n\n\n"
+ note_font Verdana
+ note_font_color 0xffffffff
+ selected true
+ xpos -227
+ ypos 485
+ addUserKnob {20 BreakLight}
+ addUserKnob {26 subtractFrom l INVISIBLE +INVISIBLE T ""}
+ addUserKnob {1 extracted l INVISIBLE +INVISIBLE}
+ addUserKnob {22 extractAOVs l "Extract AOVs" T "from psynuke_custom.BreakLight import extractAovs\nreload(extractAovs)\nextractAovs.extractAOVinit()" +STARTLINE}
+ addUserKnob {22 matchVer l "Version Match AOVs" -STARTLINE T "from psynuke_custom.BreakLight import extractAovs\nreload(extractAovs)\nextractAovs.matchAOVver()"}
+ addUserKnob {22 utilbreakout l "Add Utility Breakout" T "from psynuke.constants import PSYNUKE_STUDIO_PATH\n\nbreakutil = PSYNUKE_STUDIO_PATH + \"/Toolsets/BreakLight/BreakUtil.nk\"\naovbreak = nuke.thisNode()\n\nwith nuke.root():\n    nukescripts.clear_selection_recursive()\n    utilNode = nuke.loadToolset(breakutil)\n    utilNode\[\"xpos\"].setValue(aovbreak\[\"xpos\"].value() - 150)\n    utilNode\[\"ypos\"].setValue(aovbreak\[\"ypos\"].value() + 36)\n\n\n    aovbreak.setInput(1,utilNode)" +STARTLINE}
+ addUserKnob {20 denoiseGRP l Denoise +HIDDEN n 1}
+ denoiseGRP 0
+ addUserKnob {22 subDenoise l "Sub Denoise AOVs" +HIDDEN T "from psynuke_custom.BreakLight import denoise\nreload(denoise)\ndenoise.subDenoise()" +STARTLINE}
+ addUserKnob {22 removeDenoise l "Remove Denoise AOVs" -STARTLINE +HIDDEN T "from psynuke_custom.BreakLight import denoise\nreload(denoise)\ndenoise.remDenoise()"}
+ addUserKnob {1 denoiseAovs l "Denoise AOVs" t "Comma separated list of denoise AOVs to replace/remove" +HIDDEN}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {83 premultOut l Premultiply M {On Off}}
+ premultOut Off
+ addUserKnob {83 beauty l "Beauty Only" M {On Off}}
+ beauty Off
+ addUserKnob {83 remain l Remainder M {On Off}}
+ remain Off
+ addUserKnob {26 ""}
+ addUserKnob {41 white_12 l "<h3>Overall Grade</h3>" T OverallMult.white}
+}
+ Input {
+  inputs 0
+  name Beauty
+  note_font "Verdana Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+  note_font_size 45
+  xpos -387
+  ypos -380
+ }
+ Reformat {
+  type "to box"
+  box_width {{"\[expr \{\[exists parent.input1] ? \{parent.input1.width\} : \{parent.input0.width\}\}]"}}
+  box_height {{"\[expr \{\[exists parent.input1] ? \{parent.input1.height\} : \{parent.input0.height\}\}]"}}
+  box_fixed true
+  name beauty_Reformat
+  xpos -387
+  ypos -70
+  disable {{"!\[exists parent.input0]"}}
+ }
+ Dot {
+  name Dot32
+  label Beauty
+  note_font "Arial Black"
+  note_font_size 12
+  xpos -353
+  ypos 194
+ }
+ Dot {
+  name toAlphaPassthrough
+  xpos -353
+  ypos 265
+ }
+ Unpremult {
+  name BeutyUnpremult
+  xpos -387
+  ypos 395
+ }
+set N8f296e00 [stack 0]
+ Dot {
+  name Dot259
+  xpos -353
+  ypos 1533
+ }
+set N8f296a80 [stack 0]
+ Dot {
+  name Dot2
+  note_font "Arial Black"
+  note_font_size 12
+  xpos -353
+  ypos 1594
+ }
+set N8f296700 [stack 0]
+ Dot {
+  name Dot1
+  note_font "Arial Black"
+  note_font_size 12
+  xpos -353
+  ypos 1720
+ }
+ Dot {
+  name Dot7
+  xpos 5
+  ypos 1720
+ }
+set N8f296000 [stack 0]
+ Dot {
+  name Dot8
+  xpos 5
+  ypos 1798
+ }
+push $N8f296000
+push $N8f296e00
+ Dot {
+  name remainder
+  xpos 60
+  ypos 1444
+ }
+set N895a7880 [stack 0]
+ Dot {
+  name remainderOut
+  xpos 60
+  ypos 1660
+ }
+push $N8f296700
+push $N8f296a80
+push $N895a7880
+push 0
+ Merge2 {
+  inputs 2
+  operation plus
+  name aovFinalMerge
+  xpos 130
+  ypos 1440
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy64
+  xpos 130
+  ypos 1523
+  disable {{"!\[exists parent.input0] "}}
+ }
+ Switch {
+  inputs 2
+  which {{!beauty}}
+  name Switch1
+  label "\[value which]"
+  xpos 130
+  ypos 1584
+ }
+ Switch {
+  inputs 2
+  which {{!remain}}
+  name Switch2
+  label "\[value which]"
+  xpos 130
+  ypos 1650
+ }
+ CopyMetaData {
+  inputs 2
+  name CopyMetaData1
+  xpos 130
+  ypos 1716
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 130
+  ypos 1794
+ }
+ Grade {
+  black_clamp false
+  name OverallMult
+  xpos 130
+  ypos 1866
+ }
+ Premult {
+  name Premult1
+  xpos 130
+  ypos 1938
+  disable {{premultOut}}
+ }
+ Output {
+  name Output
+  xpos 130
+  ypos 2038
+ }
+ Input {
+  inputs 0
+  name Utilities
+  note_font "Verdana Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+  note_font_size 45
+  xpos -831
+  ypos -380
+  number 1
+ }
+ Dot {
+  name Dot3
+  xpos -797
+  ypos -70
+ }
+end_group

@@ -1,0 +1,80 @@
+#! /Applications/Nuke12.2v3/Nuke12.2v3.app/Contents/MacOS/libnuke-12.2.3.dylib -nx
+version 12.2 v3
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {7 Contrast R -2 4}
+ addUserKnob {7 exp l Exposure R -2 2}
+ addUserKnob {41 blackpoint l Blackpoint T Grade1.blackpoint}
+ addUserKnob {41 blackpoint_panelDropped l INVISIBLE +INVISIBLE T Grade1.blackpoint_panelDropped}
+ addUserKnob {41 whitepoint l Whitepoint T Grade1.whitepoint}
+ addUserKnob {41 whitepoint_panelDropped l INVISIBLE +INVISIBLE T Grade1.whitepoint_panelDropped}
+ addUserKnob {26 ""}
+ addUserKnob {7 Whitebalance l "White Balance" R -1 1}
+ addUserKnob {7 saturation l Saturation R -1 1}
+ addUserKnob {7 degreen l De-Green R -1 1}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 92
+  ypos -450
+ }
+ EXPTool {
+  mode Stops
+  red {{parent.exp}}
+  green {{parent.exp}}
+  blue {{parent.exp}}
+  name EXPTool1
+  label EXPOSURE
+  xpos 92
+  ypos -371
+ }
+ Grade {
+  name Grade1
+  label "BLACK AND WHITE POINTS"
+  xpos 92
+  ypos -339
+ }
+ ColorCorrect {
+  contrast {{(parent.Contrast/2)+1}}
+  name ColorCorrect1
+  label CONTRAST
+  xpos 92
+  ypos -294
+ }
+ Grade {
+  white {{1-(parent.Whitebalance/2)} 1 {1+(parent.Whitebalance/2)} 1}
+  name Grade3
+  label "WHITEBALANCE GAIN"
+  xpos 92
+  ypos -247
+ }
+ Grade {
+  white {{1+(parent.degreen/2)} {1-(parent.degreen/2)} {1+(parent.degreen/2)} 1}
+  name Grade2
+  label DEGREEN
+  xpos 92
+  ypos -189
+ }
+ Saturation {
+  saturation {{parent.saturation+1}}
+  name Saturation1
+  xpos 92
+  ypos -132
+ }
+set N7ba05400 [stack 0]
+ Output {
+  name Output1
+  xpos 92
+  ypos -88
+ }
+push $N7ba05400
+ Viewer {
+  frame_range 1-90
+  frame_increment 12
+  fps 23.97602463
+  name Viewer1
+  xpos 486
+  ypos -21
+ }
+end_group

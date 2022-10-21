@@ -1,0 +1,102 @@
+#! C:/Temp/psyop_cache/apps/nuke/win64/10.0v6/nuke-10.0.6.dll -nx
+version 10.0 v6
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1920" h="1170" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1241" stretch="1"/>
+            <splitter orientation="2">
+                <split size="0"/>
+                <dock id=""/>
+                <split size="1104"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1" focus="true">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="-1920" y="0" w="1920" h="1200" fullscreen="1" screen="1">
+        <splitter orientation="2">
+            <split size="1200"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name P:/projects/clashridicduel_28423P/code/primary/addons/nuke/plugins/ToolSets/templates/out_nodes.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT linear
+ monitorLut Gamma2.2
+ int8Lut Gamma2.2
+ int16Lut Gamma2.2
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 psycolor_tab l Psycolor}
+ addUserKnob {6 ocio_viewer_use_metadata l "OCIO Viewer Use Metadata" -STARTLINE}
+ ocio_viewer_use_metadata true
+ addUserKnob {6 viewer_overlay l "Show Viewer Overlay" -STARTLINE}
+ viewer_overlay true
+ addUserKnob {4 viewer_look l "Viewer Look" M {None grade tonemap}}
+}
+HueCorrect {
+ inputs 0
+ hue {sat {curve 0.9838235378 0.9343284369 0.9069652557 1 0.9838235378}
+   lum {}
+   red {}
+   green {}
+   blue {}
+   r_sup {}
+   g_sup {}
+   b_sup {}
+   sat_thrsh {}}
+ mix 0.75
+ name HueCorrect2
+ xpos -94
+ ypos -151
+}
+Grade {
+ white 1.2
+ gamma 0.85
+ black_clamp false
+ name Grade1
+ xpos -94
+ ypos -125
+}
+ColorCorrect {
+ highlights.gain 1.15
+ name ColorCorrect1
+ xpos -94
+ ypos -99
+}
+SoftClip {
+ conversion "logarithmic compress"
+ softclip_min 0
+ name SoftClip1
+ xpos -94
+ ypos -73
+}
+LumaGrain {
+ name LumaGrain1
+ selected true
+ xpos -94
+ ypos -47
+ mix 0.3
+}

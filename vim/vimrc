@@ -1,0 +1,41 @@
+" config for Vundle
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()	" required
+filetype plugin indent on	" required
+
+" Easy access to the start of the new line
+nmap 0 ^
+
+" Use the space key as our leader key
+let mapleader = "\<Space>"
+
+" Split edit my vimrc. Space, v r, in sequence
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" Source (reload) my vimrc. Space, s, o in sequence
+nmap <leader>so :source $MYVIMRC<cr>
+
+" Add ctrl-S to come out of insert mode and write the file
+imap <C-s> <esc>:w<cr>
+
+" General config
+set nocompatible	 " not compatible with VI
+set number		 " show line numbers
+
+command! Q q " bind :Q to :q
+
+" Remap to move within wrapped lines
+nmap j gj
+nmap k gk
+

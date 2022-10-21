@@ -1,0 +1,179 @@
+set cut_paste_input [stack 0]
+version 11.3 v6
+push $cut_paste_input
+Group {
+ name lowres_look
+ tile_color 0x55bfffff
+ selected true
+ xpos 2740
+ ypos 2012
+ addUserKnob {20 User l "Low res controls"}
+ addUserKnob {4 dither l "Dither type" M {8x8 4x4 2x2 "" ""}}
+ addUserKnob {41 scale l "Reformat scale" T Reformat29.scale}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 boolean l "Add noise to render?" +STARTLINE}
+ addUserKnob {20 group l "Pre Dither Grade" n 1}
+ group 0
+ addUserKnob {41 white l gain T Grade15.white}
+ addUserKnob {41 gamma T Grade15.gamma}
+ addUserKnob {41 mix T Grade15.mix}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 text l "Posterize controls"}
+ addUserKnob {41 Colors l "Color depth" T Posterize3.Colors}
+ addUserKnob {41 disable_1 l disable T Posterize3.disable}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 which l "mix original" T Dissolve5.which}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 1138
+  ypos 545
+ }
+ Reformat {
+  name Reformat26
+  xpos 1138
+  ypos 632
+  disable true
+ }
+set N1850f000 [stack 0]
+ Reformat {
+  type scale
+  scale {{parent.Reformat29.scale}}
+  filter Impulse
+  name Reformat27
+  xpos 1484
+  ypos 632
+ }
+ EXPTool {
+  name Exposure8
+  xpos 1484
+  ypos 658
+ }
+ Reformat {
+  format "3000 1688 0 0 3000 1688 1 "
+  filter Impulse
+  name Reformat28
+  xpos 1484
+  ypos 684
+ }
+push $N1850f000
+ Reformat {
+  type scale
+  scale 0.3
+  filter Impulse
+  name Reformat29
+  xpos 1138
+  ypos 724
+ }
+ Grade {
+  white 1.36
+  gamma 1.6
+  black_clamp false
+  name Grade15
+  xpos 1138
+  ypos 770
+ }
+ Posterize {
+  Colors 8
+  name Posterize3
+  xpos 1138
+  ypos 796
+  disable true
+ }
+set N18b1a800 [stack 0]
+ Noise {
+  replace true
+  size 820
+  zoffset 2.7
+  lacunarity 1.26
+  gain 0.94
+  center {960 540}
+  name Noise3
+  xpos 884
+  ypos 829
+ }
+ Clamp {
+  name Clamp3
+  xpos 884
+  ypos 855
+ }
+push $N18b1a800
+ Grade {
+  inputs 1+1
+  multiply 0.27
+  black_clamp false
+  name Grade19
+  xpos 1138
+  ypos 861
+  disable true
+ }
+set Nf1543c00 [stack 0]
+ BlinkScript {
+  recompileCount 4
+  ProgramGroup 1
+  KernelDescription "2 \"Dither2x2Kernel\" iterate pixelWise b4e92e790235696cfacc09c304e3e027dbbd926ea04a9ac586ce6f28fa071918 2 \"src\" Read Point \"dst\" Write Point 0 0 0"
+  kernelSource "inline float mod(float x, float y) \{\n    return x - y * floor(x / y);\n\}\n\ninline float luma(float3 color) \{\n  float3 rgbWeights(0.299, 0.587, 0.114);\n  return dot(color, rgbWeights);\n\}\n\ninline float dither2x2(float2 position, float brightness) \{\n  int x = int(mod(position.x, 2.0));\n  int y = int(mod(position.y, 2.0));\n  int index = x + y * 2;\n  float limit = 0.0;\n\n  if (x < 8) \{\n    if (index == 0) limit = 0.25;\n    if (index == 1) limit = 0.75;\n    if (index == 2) limit = 1.00;\n    if (index == 3) limit = 0.50;\n  \}\n\n  return brightness < limit ? 0.0 : 1.0;\n\}\n\ninline float3 dither2x2(float2 position, float3 color) \{\n  return color * dither2x2(position, luma(color));\n\}\n\nkernel Dither2x2Kernel : ImageComputationKernel<ePixelWise>\n\{\n  Image<eRead, eAccessPoint, eEdgeClamped> src; // the input image\n  Image<eWrite> dst;\n\n  // In define(), parameters can be given labels and default values.\n  void define() \{\n  \}\n\n  // The init() function is run before any calls to process().\n  // Local variables can be initialized here.\n  void init() \{\n  \}\n\n  void process(int2 pos) \{\n    // Read the input image\n    SampleType(src) input = src();\n\n    // Isolate the RGB components\n    float3 srcPixel(input.x, input.y, input.z);\n\n    float  brightness = luma(srcPixel);\n    float2 coord(pos.x, pos.y);\n\n    float dither = dither2x2(coord, brightness);\n\n    // Write the result to the output image\n    dst() = float4(srcPixel.x*dither, srcPixel.y*dither, srcPixel.z*dither, input.w);\n  \}\n\};"
+  rebuild ""
+  rebuild_finalise ""
+  name BlinkScript9
+  xpos 1382
+  ypos 961
+ }
+push $Nf1543c00
+ BlinkScript {
+  recompileCount 1
+  ProgramGroup 1
+  KernelDescription "2 \"Dither4x4Kernel\" iterate pixelWise 46d64354a85b51275f1e6c5f9959b28507a01828a65986567a49ac429c089004 2 \"src\" Read Point \"dst\" Write Point 0 0 0"
+  kernelSource "inline float mod(float x, float y) \{\n    return x - y * floor(x / y);\n\}\n\ninline float luma(float3 color) \{\n  float3 rgbWeights(0.299, 0.587, 0.114);\n  return dot(color, rgbWeights);\n\}\n\ninline float dither4x4(float2 position, float brightness) \{\n  int x = int(mod(position.x, 4.0));\n  int y = int(mod(position.y, 4.0));\n  int index = x + y * 4;\n  float limit = 0.0;\n\n  if (x < 8) \{\n    if (index == 0) limit = 0.0625;\n    if (index == 1) limit = 0.5625;\n    if (index == 2) limit = 0.1875;\n    if (index == 3) limit = 0.6875;\n    if (index == 4) limit = 0.8125;\n    if (index == 5) limit = 0.3125;\n    if (index == 6) limit = 0.9375;\n    if (index == 7) limit = 0.4375;\n    if (index == 8) limit = 0.25;\n    if (index == 9) limit = 0.75;\n    if (index == 10) limit = 0.125;\n    if (index == 11) limit = 0.625;\n    if (index == 12) limit = 1.0;\n    if (index == 13) limit = 0.5;\n    if (index == 14) limit = 0.875;\n    if (index == 15) limit = 0.375;\n  \}\n\n  return brightness < limit ? 0.0 : 1.0;\n\}\n\ninline float3 dither4x4(float2 position, float3 color) \{\n  return color * dither4x4(position, luma(color));\n\}\n\nkernel Dither4x4Kernel : ImageComputationKernel<ePixelWise>\n\{\n  Image<eRead, eAccessPoint, eEdgeClamped> src; // the input image\n  Image<eWrite> dst;\n\n  // In define(), parameters can be given labels and default values.\n  void define() \{\n  \}\n\n  // The init() function is run before any calls to process().\n  // Local variables can be initialized here.\n  void init() \{\n  \}\n\n  void process(int2 pos) \{\n    // Read the input image\n    SampleType(src) input = src();\n\n    // Isolate the RGB components\n    float3 srcPixel(input.x, input.y, input.z);\n\n    float  brightness = luma(srcPixel);\n    float2 coord(pos.x, pos.y);\n\n    float dither = dither4x4(coord, brightness);\n\n    // Write the result to the output image\n    dst() = float4(srcPixel.x*dither, srcPixel.y*dither, srcPixel.z*dither, input.w);\n  \}\n\};"
+  rebuild ""
+  rebuild_finalise ""
+  name BlinkScript8
+  xpos 1271
+  ypos 962
+ }
+push $Nf1543c00
+ BlinkScript {
+  recompileCount 1
+  ProgramGroup 1
+  KernelDescription "2 \"Dither8x8Kernel\" iterate pixelWise e9590bff5933b95d700c05bff8eb31cd95a49cfc0a06a5b35abe0ca26fe8139c 2 \"src\" Read Point \"dst\" Write Point 0 0 0"
+  kernelSource "inline float mod(float x, float y) \{\n    return x - y * floor(x / y);\n\}\n\ninline float luma(float3 color) \{\n  float3 rgbWeights(0.299, 0.587, 0.114);\n  return dot(color, rgbWeights);\n\}\n\ninline float dither8x8(float2 position, float brightness) \{\n  int x = int(mod(position.x, 8.0));\n  int y = int(mod(position.y, 8.0));\n  int index = x + y * 8;\n  float limit = 0.0;\n\n  if (x < 8) \{\n    if (index == 0) limit = 0.015625;\n    if (index == 1) limit = 0.515625;\n    if (index == 2) limit = 0.140625;\n    if (index == 3) limit = 0.640625;\n    if (index == 4) limit = 0.046875;\n    if (index == 5) limit = 0.546875;\n    if (index == 6) limit = 0.171875;\n    if (index == 7) limit = 0.671875;\n    if (index == 8) limit = 0.765625;\n    if (index == 9) limit = 0.265625;\n    if (index == 10) limit = 0.890625;\n    if (index == 11) limit = 0.390625;\n    if (index == 12) limit = 0.796875;\n    if (index == 13) limit = 0.296875;\n    if (index == 14) limit = 0.921875;\n    if (index == 15) limit = 0.421875;\n    if (index == 16) limit = 0.203125;\n    if (index == 17) limit = 0.703125;\n    if (index == 18) limit = 0.078125;\n    if (index == 19) limit = 0.578125;\n    if (index == 20) limit = 0.234375;\n    if (index == 21) limit = 0.734375;\n    if (index == 22) limit = 0.109375;\n    if (index == 23) limit = 0.609375;\n    if (index == 24) limit = 0.953125;\n    if (index == 25) limit = 0.453125;\n    if (index == 26) limit = 0.828125;\n    if (index == 27) limit = 0.328125;\n    if (index == 28) limit = 0.984375;\n    if (index == 29) limit = 0.484375;\n    if (index == 30) limit = 0.859375;\n    if (index == 31) limit = 0.359375;\n    if (index == 32) limit = 0.0625;\n    if (index == 33) limit = 0.5625;\n    if (index == 34) limit = 0.1875;\n    if (index == 35) limit = 0.6875;\n    if (index == 36) limit = 0.03125;\n    if (index == 37) limit = 0.53125;\n    if (index == 38) limit = 0.15625;\n    if (index == 39) limit = 0.65625;\n    if (index == 40) limit = 0.8125;\n    if (index == 41) limit = 0.3125;\n    if (index == 42) limit = 0.9375;\n    if (index == 43) limit = 0.4375;\n    if (index == 44) limit = 0.78125;\n    if (index == 45) limit = 0.28125;\n    if (index == 46) limit = 0.90625;\n    if (index == 47) limit = 0.40625;\n    if (index == 48) limit = 0.25;\n    if (index == 49) limit = 0.75;\n    if (index == 50) limit = 0.125;\n    if (index == 51) limit = 0.625;\n    if (index == 52) limit = 0.21875;\n    if (index == 53) limit = 0.71875;\n    if (index == 54) limit = 0.09375;\n    if (index == 55) limit = 0.59375;\n    if (index == 56) limit = 1.0;\n    if (index == 57) limit = 0.5;\n    if (index == 58) limit = 0.875;\n    if (index == 59) limit = 0.375;\n    if (index == 60) limit = 0.96875;\n    if (index == 61) limit = 0.46875;\n    if (index == 62) limit = 0.84375;\n    if (index == 63) limit = 0.34375;\n  \}\n\n  return brightness < limit ? 0.0 : 1.0;\n\}\n\ninline float3 dither8x8(float2 position, float3 color) \{\n  return color * dither8x8(position, luma(color));\n\}\n\nkernel Dither8x8Kernel : ImageComputationKernel<ePixelWise>\n\{\n  Image<eRead, eAccessPoint, eEdgeClamped> src; // the input image\n  Image<eWrite> dst;\n\n  // In define(), parameters can be given labels and default values.\n  void define() \{\n  \}\n\n  // The init() function is run before any calls to process().\n  // Local variables can be initialized here.\n  void init() \{\n  \}\n\n  void process(int2 pos) \{\n    // Read the input image\n    SampleType(src) input = src();\n\n    // Isolate the RGB components\n    float3 srcPixel(input.x, input.y, input.z);\n\n    float  brightness = luma(srcPixel);\n    float2 coord(pos.x, pos.y);\n\n    float dither = dither8x8(coord, brightness);\n\n    // Write the result to the output image\n    dst() = float4(srcPixel.x*dither, srcPixel.y*dither, srcPixel.z*dither, input.w);\n  \}\n\};"
+  rebuild ""
+  rebuild_finalise ""
+  name BlinkScript5
+  xpos 1138
+  ypos 971
+ }
+ Switch {
+  inputs 3
+  which {{dither}}
+  name ditherSwitch
+  selected true
+  xpos 1138
+  ypos 1063
+ }
+ Reformat {
+  format "3000 1688 0 0 3000 1688 1 "
+  filter Impulse
+  name Reformat30
+  xpos 1138
+  ypos 1317
+ }
+ Dissolve {
+  inputs 2
+  which 0.835
+  name Dissolve5
+  xpos 1484
+  ypos 1326
+ }
+ Reformat {
+  name Reformat31
+  xpos 1484
+  ypos 1364
+ }
+ Output {
+  name Output1
+  xpos 1484
+  ypos 1464
+ }
+end_group

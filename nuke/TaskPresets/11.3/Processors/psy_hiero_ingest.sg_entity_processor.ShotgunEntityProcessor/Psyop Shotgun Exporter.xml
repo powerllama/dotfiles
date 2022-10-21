@@ -1,0 +1,55 @@
+<root presetname="Psyop Shotgun Exporter" tasktype="psy_hiero_ingest.sg_entity_processor.ShotgunEntityProcessor">
+    <create_version valuetype="bool">True</create_version>
+    <update_timing valuetype="bool">True</update_timing>
+    <versionIndex valuetype="int">1</versionIndex>
+    <split_version valuetype="bool">True</split_version>
+    <reset_shotanchor valuetype="bool">False</reset_shotanchor>
+    <exportTemplate valuetype="list">
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">Copy Images</SequenceItem>
+            <SequenceItem valuetype="psy_hiero_ingest.sg_copy_exporter.ShotgunCopyPreset">
+                <root presetname="ShotgunCopyPreset" tasktype="psy_hiero_ingest.sg_copy_exporter.ShotgunCopyExporter">
+                    <disable_renumbering valuetype="bool">False</disable_renumbering>
+                    <create_version valuetype="bool">True</create_version>
+                    <update_timing valuetype="bool">True</update_timing>
+                    <submission_preset valuetype="unicode">SG Thumbnail</submission_preset>
+                    <split_version valuetype="bool">True</split_version>
+                    <reset_shotanchor valuetype="bool">False</reset_shotanchor>
+                    <create_movie valuetype="bool">False</create_movie>
+                </root>
+            </SequenceItem>
+        </SequenceItem>
+        <SequenceItem valuetype="tuple">
+            <SequenceItem valuetype="str">Transgen Exporter</SequenceItem>
+            <SequenceItem valuetype="psy_hiero_ingest.sg_transgen.ShotgunTransgenPreset">
+                <root presetname="ShotgunTransgenPreset" tasktype="psy_hiero_ingest.sg_transgen.ShotgunTransgenExporter">
+                    <settings valuetype="dict">
+                        <export_configuration valuetype="list">
+                            <SequenceItem valuetype="dict">
+                                <out_colorspace valuetype="str">default</out_colorspace>
+                                <node_sequence valuetype="list" />
+                                <preset valuetype="unicode">exr</preset>
+                                <proxy valuetype="bool">False</proxy>
+                            </SequenceItem>
+                        </export_configuration>
+                    </settings>
+                </root>
+            </SequenceItem>
+        </SequenceItem>
+    </exportTemplate>
+    <excludeTags valuetype="list" />
+    <includeRetimes valuetype="bool">False</includeRetimes>
+    <startFrameSource valuetype="str">Source</startFrameSource>
+    <cutLength valuetype="bool">False</cutLength>
+    <disable_renumbering valuetype="bool">False</disable_renumbering>
+    <submission_preset valuetype="unicode">SG Thumbnail</submission_preset>
+    <startFrameIndex valuetype="int">1001</startFrameIndex>
+    <exportRoot valuetype="str">{projectroot}</exportRoot>
+    <includeTags valuetype="list" />
+    <cutUseHandles valuetype="bool">False</cutUseHandles>
+    <versionPadding valuetype="int">3</versionPadding>
+    <add_to_cut valuetype="bool">False</add_to_cut>
+    <auto_version_up valuetype="bool">True</auto_version_up>
+    <create_movie valuetype="bool">False</create_movie>
+    <cutHandles valuetype="int">12</cutHandles>
+</root>

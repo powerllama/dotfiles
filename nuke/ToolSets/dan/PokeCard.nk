@@ -1,0 +1,216 @@
+#! /Applications/Nuke13.0v5/Nuke13.0v5.app/Contents/MacOS/libnuke-13.0.5.dylib -nx
+version 13.0 v5
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="2560" y="25" w="2560" h="1387" maximized="1" screen="1">
+        <splitter orientation="1">
+            <split size="2556"/>
+            <splitter orientation="1">
+                <split size="0"/>
+                <dock id="" hideTitles="1"/>
+                <split size="2552"/>
+                <splitter orientation="2">
+                    <split size="1367"/>
+                    <splitter orientation="1">
+                        <split size="57"/>
+                        <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                            <page id="Toolbar.1"/>
+                        </dock>
+                        <split size="1742"/>
+                        <dock id="" activePageId="DAG.2" focus="true">
+                            <page id="DAG.1"/>
+                            <page id="DopeSheet.1"/>
+                            <page id="Curve Editor.1"/>
+                            <page id="DAG.2"/>
+                        </dock>
+                        <split size="745"/>
+                        <dock id="" activePageId="Properties.1">
+                            <page id="Properties.1"/>
+                        </dock>
+                    </splitter>
+                    <split size="0"/>
+                    <dock id=""/>
+                </splitter>
+            </splitter>
+            <split size="0"/>
+            <dock id=""/>
+        </splitter>
+    </window>
+    <window x="0" y="25" w="2560" h="1295" maximized="1" screen="0">
+        <splitter orientation="2">
+            <split size="1295"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name "/Volumes/Macintosh HD/Users/dansturm/Dropbox (Sandwich)/_Projects/Memberset/Memberset File x-fer/comp/nuke_tools/ToolSets/PokeCard.nk"
+ colorManagement OCIO
+ OCIO_config default-alexa-13
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT scene_linear
+ monitorLut rec709
+ monitorOutLUT "rec709 (default)"
+ int8Lut matte_paint
+ int16Lut texture_paint
+ logLut compositing_log
+ floatLut scene_linear
+ addUserKnob {20 "Motion Blur"}
+ addUserKnob {26 gmbcl l "Global Motion Blur Controls"}
+ addUserKnob {7 motionblur R 0 4}
+ addUserKnob {7 shutter R 0 2}
+ addUserKnob {4 shutteroffset l "shutter offset" M {centered start end}}
+}
+Group {
+ inputs 0
+ name PokeCard
+ selected true
+ xpos 2727
+ ypos 1495
+}
+ Read {
+  inputs 0
+  file_type png
+  file ../../../3D_Assets/1090_Cards/tex/back.png
+  format "1024 1420 0 0 1024 1420 1 "
+  origset true
+  version 1
+  name Read1
+  xpos -101
+  ypos -140
+ }
+ Reformat {
+  format "1024 1420 0 0 1024 1420 1 "
+  name Reformat3
+  xpos -101
+  ypos -60
+ }
+ Mirror2 {
+  flip true
+  flop true
+  name Mirror2_3
+  xpos -101
+  ypos -28
+ }
+ Transform {
+  translate {453 649}
+  scale {0.482 0.536}
+  center {503 709}
+  name Transform4
+  xpos -101
+  ypos -4
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -5
+  ypos -237
+ }
+ Reformat {
+  format "1024 1420 0 0 1024 1420 1 "
+  name Reformat4
+  xpos -5
+  ypos -148
+ }
+ Mirror2 {
+  flip true
+  flop true
+  name Mirror2_4
+  xpos -5
+  ypos -116
+ }
+ Transform {
+  translate {-179 656}
+  scale {0.484 0.538}
+  center {488 709}
+  name Transform5
+  xpos -5
+  ypos -92
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color 1
+  name Constant3
+  xpos 215
+  ypos -188
+ }
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 white -1 -1 rgba.alpha 0 3"
+  name Shuffle1
+  xpos 215
+  ypos -116
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  format "2048 2048 0 0 2048 2048 1 square_2K"
+  name Constant4
+  xpos 105
+  ypos -188
+ }
+ Merge2 {
+  inputs 2
+  name Merge5
+  xpos 105
+  ypos -116
+ }
+ Merge2 {
+  inputs 2
+  name Merge6
+  xpos 105
+  ypos -92
+ }
+ Merge2 {
+  inputs 2
+  name Merge7
+  xpos 105
+  ypos -4
+ }
+ Crop {
+  box {0 0 2048 2048}
+  reformat true
+  crop false
+  name Crop2
+  xpos 105
+  ypos 20
+ }
+set N2bdad400 [stack 0]
+push $N2bdad400
+ Phong {
+  inputs 2
+  name Phong1
+  selected true
+  xpos 105
+  ypos 103
+ }
+ ReadGeo2 {
+  file ../../../3D_Assets/1090_Cards/Pikachu_v006.abc
+  version 2
+  use_geometry_colors false
+  cast_shadow false
+  receive_shadow false
+  scene_view {{0} imported: 0 1 2 3 4 selected: 0 3 4 1 2 items: /root/58_Pikachu/58_PikachuShape /root/58_Pikachu/Front_104/Front_104Shape /root/58_Pikachu/Front_104/Front_107/Front_107Shape /root/58_Pikachu/Back_42/Back_42Shape /root/58_Pikachu/Back_42/Back_48/Back_48Shape}
+  name ReadGeo1
+  xpos 105
+  ypos 191
+ }
+ TransformGeo {
+  translate {0 0.07 0}
+  scaling {1.06 0.94 1}
+  name TransformGeo2
+  xpos 105
+  ypos 234
+ }
+ Output {
+  name Output1
+  xpos 105
+  ypos 294
+ }
+end_group
