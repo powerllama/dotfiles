@@ -1,0 +1,10 @@
+**/.DS_Store
+__pycache__/
+*.pyc
+ScriptEditorHistory.xml
+tab_stats.dat
+recent_files
+FileChooser_Favorites.pref
+uistate.ini
+KS3/py_state.txt
+KS3/Scripts/scripts/Untitled.py.autosave
