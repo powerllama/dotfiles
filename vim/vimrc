@@ -30,7 +30,6 @@ nmap <leader>so :source $MYVIMRC<cr>
 imap <C-s> <esc>:w<cr>
 
 " General config
-set nocompatible	 " not compatible with VI
 set number		 " show line numbers
 
 command! Q q " bind :Q to :q
