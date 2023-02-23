@@ -17,6 +17,10 @@ filetype plugin indent on	" required
 " Easy access to the start of the new line
 nmap 0 ^
 
+" Remap to move within wrapped lines
+nmap j gj
+nmap k gk
+
 " Use the space key as our leader key
 let mapleader = "\<Space>"
 
@@ -34,7 +38,4 @@ set number		 " show line numbers
 
 command! Q q " bind :Q to :q
 
-" Remap to move within wrapped lines
-nmap j gj
-nmap k gk
 

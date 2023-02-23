@@ -1,36 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="-8" y="-8" w="1920" h="1147" maximized="1" screen="0">
+    <window x="0" y="25" w="2560" h="1338" maximized="1" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="956" stretch="1"/>
+            <split size="886" stretch="1"/>
             <splitter orientation="2">
-                <split size="582"/>
-                <dock id="" activePageId="Properties.1" focus="true">
-                    <page id="Properties.1"/>
+                <split size="773"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
                 </dock>
-                <split size="517"/>
-                <dock id="" activePageId="DAG.1">
+                <split size="545"/>
+                <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="916"/>
-            <dock id="" activePageId="uk.co.thefoundry.scripteditor.2">
-                <page id="uk.co.thefoundry.scripteditor.2"/>
-            </dock>
-        </splitter>
-    </window>
-    <window x="-1928" y="-8" w="1920" h="1177" maximized="1" screen="1">
-        <splitter orientation="2">
-            <split size="1177"/>
-            <dock id="" activePageId="Viewer.1">
-                <page id="Viewer.1"/>
-            </dock>
+            <split size="1626"/>
+            <splitter orientation="2">
+                <split size="1231"/>
+                <splitter orientation="1">
+                    <split size="547"/>
+                    <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
+                        <page id="uk.co.thefoundry.scripteditor.1"/>
+                    </dock>
+                    <split size="520"/>
+                    <dock id="" activePageId="Properties.1">
+                        <page id="Properties.1"/>
+                    </dock>
+                    <split size="551"/>
+                    <dock id="" activePageId="NukeServerSocket.MainWindow">
+                        <page id="NukeServerSocket.MainWindow"/>
+                    </dock>
+                </splitter>
+                <split size="87"/>
+                <dock id="" hideTitles="1" activePageId="Progress.1">
+                    <page id="Progress.1"/>
+                </dock>
+            </splitter>
         </splitter>
     </window>
 </layout>

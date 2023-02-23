@@ -2,11 +2,12 @@ Preferences {
  inputs 0
  name Preferences
   selectedGPUDeviceName "Apple M1 Max"
-  platformPathRemaps ""
+  platformPathRemaps "Z:\\Dropbox\\;/Users/Shared/symlinks/;-;"
   ShadeDAGNodes false
   expression_arrows false
   link_knob_arrows false
   clone_arrows false
+  ShakeSensitivity 1.81
   renderer nuke
   defaultFlipbook "Flipbook Viewer"
   addUserKnob {20 hotboxLabel l W_hotbox}
@@ -27,7 +28,9 @@ Preferences {
   addUserKnob {22 hotboxResetShortcut l set t "Apply new shortcut." -STARTLINE T W_hotbox.resetMenuItems()}
   addUserKnob {4 hotboxTriggerDropdown l "Launch mode" t "The way the hotbox is launched. When set to 'Press and Hold' the Hotbox will appear whenever the shortcut is pressed and disappear as soon as the user releases the key. When set to 'Single Tap' the shortcut will toggle the Hotbox on and off." M {"Press and Hold" "Single Tap"}}
   addUserKnob {6 hotboxCloseOnClick l "Close on button click" t "Close the Hotbox whenever a button is clicked (excluding submenus obviously). This option will only take effect when the launch mode is set to 'Single Tap'." -STARTLINE}
+  hotboxCloseOnClick true
   addUserKnob {6 hotboxExecuteOnClose l "Execute button without click" t "Execute the button underneath the cursor whenever the Hotbox is closed." -STARTLINE}
+  hotboxExecuteOnClose true
   addUserKnob {4 hotboxRuleClassOrder l Order t "The order in which the buttons will be loaded." M {"Class - Rule" "Rule - Class"}}
   addUserKnob {4 hotboxOpenManagerOptions l "Manager startup default" t "The section of the Manager that will be opened on startup.\n\n<b>Contextual</b> Open the 'Single' or 'Multiple' section, depending on selection.\n<b>All</b> Open the 'All' section.\n<b>Rules</b> Open the 'Rules' section.\n<b>Contextual/All</b> Contextual if the selection matches a button in the 'Single' or 'Multiple' section, otherwise the 'All' section will be opened.\n<b>Contextual/Rules</b> Contextual if the selection matches a button in the 'Single' or 'Multiple' section, otherwise the 'Rules' section will be opened." -STARTLINE M {Contextual All Rules Contextual/All Contextual/Rules}}
   addUserKnob {26 hotboxAppearanceLabel l <b>Appearance</b>}

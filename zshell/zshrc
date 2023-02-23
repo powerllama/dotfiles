@@ -16,10 +16,10 @@ setopt HIST_REDUCE_BLANKS	# removes blank lines from history
 
 # aliases
 alias ll='ls -al'
-alias nuke="/Applications/Nuke13.2v4/Nuke13.2v4.app/Contents/MacOS/Nuke13.2"
+alias nuke="/Applications/Nuke13.2v5/Nuke13.2v5.app/Contents/MacOS/Nuke13.2"
 PROMPT='%B%F{240}%3~%f%b %# '
 alias nassh='ssh ds920'
-alias pcoip='/Applications/PCoIPClient.app/Contents/MacOS/PCoIPClient -s 0 -l 2 -b us-west-2.nexodus.cloud --username abrown'
+alias nexodus='/Applications/PCoIPClient.app/Contents/MacOS/PCoIPClient -s 0 -l 2 -b us-west-2.nexodus.cloud --accept-disclaimer --username abrown'
 
 # suffix aliases
 alias -s txt="subl"

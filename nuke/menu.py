@@ -64,6 +64,7 @@ abMenu.addCommand('fresnel', 'nuke.createNode(\"nFresnelMatte.gizmo")')
 abMenu.addCommand('Utility/CurveConverter', 'nuke.createNode("CurveConverter.nk")' , icon='CurveConverter.png')
 abMenu.addCommand('Grain_ARRI_Alexa', 'nuke.createNode("Grain_ARRI_Alexa.gizmo")')
 abMenu.addCommand('reProject3D', 'nuke.createNode("ReProject3D.gizmo")')
+abMenu.addCommand('transformmix', 'nuke.createNode("Transform_Mix.gizmo")')
 
 # FrameHold modifications
 def OnFrameHoldCreate():
@@ -152,3 +153,5 @@ abMenu.addCommand('Channel HotBox', 'channel_hotbox.start()', 'alt+q')
 
 # firefly killer
 abMenu.addCommand('Firefly Killer', 'addGroupTool("FireflyKiller.gizmo")')
+
+import NukeServerSocket

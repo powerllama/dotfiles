@@ -23,7 +23,7 @@
 		term-mode-hook
 		shell-mode-hook
 		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode0))))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
 ;; Make ESC quit prompts
@@ -157,11 +157,11 @@
 ;; Org-mode stuff
 (defun abrown/org-mode-setup ()
   (org-indent-mode)
-  (variable-pitch-mode 1)
+  ;(variable-pitch-mode 1)
   (visual-line-mode 1))
 
 (use-package org
-  :hook (org-mode . org-mode-setup)
+  :hook (org-mode . abrown/org-mode-setup)
   :config
   (setq org-ellipsis " ▾")
   (setq org-agenda-start-with-log-mode t)
@@ -199,9 +199,23 @@
     (lambda () (interactive) (org-capture)))
 
 (use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :after org
+  :hook (org-mode . org-bullets-mode))
+
+(defun abrown/org-mode-visual-fill ()
+  (setq visual-fill-column-width 100
+	visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook (org-mode . abrown/org-mode-visual-fill))
+
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("py" . "src python"))
+
 
 ;; macOS fixes
 (setq mac-option-key-is-meta nil)

@@ -1,0 +1,16 @@
+set cut_paste_input [stack 0]
+version 13.2 v5
+push $cut_paste_input
+NoOp {
+name ReSymlink_Reads
+selected true
+xpos -8297
+ypos -9579
+addUserKnob {20 User}
+addUserKnob {26 MakeAll l "" +STARTLINE T "Re-Symlink All Read Nodes to /Users/Shared"}
+addUserKnob {22 resymall l "Re-Symlink All Nodes" T "def symlink_all():\n\t\tfrom pathlib import Path\n\n\t\treads = \[node for node in nuke.allNodes() if node.Class() == \"Read\"]\n\n\t\tfor x in reads:\n\t\t\tfilepath = Path(x\[\"file\"].value())\n\t\t\tif \"online\" in str(filepath):\n\t\t\t\treplace_string = '/Users/Shared/symlinks/'\n\t\t\t\tindex = filepath.parts.index('online')\n\t\t\t\tnew_path = Path(replace_string).joinpath(*filepath.parts\[index-1:])\n\t\t\t\tprint(new_path)\n\t\t\t\tx\[\"file\"].setValue(str(new_path))\n\nsymlink_all()\n" +STARTLINE}
+addUserKnob {26 ""}
+addUserKnob {26 MakeSelected l "" +STARTLINE T "Re-Symlink Selected Read Nodes to /Users/Shared"}
+addUserKnob {22 ResymSelected l "Re-Symlink Selected Nodes" T "def symlink_selected():\n\tfrom pathlib import Path\n\n\treads = \[node for node in nuke.selectedNodes() if node.Class() == \"Read\"]\n\n\tfor x in reads:\n\t\tfilepath = Path(x\[\"file\"].value())\n\t\tif \"online\" in str(filepath):\n\t\t\treplace_string = '/Users/Shared/symlinks/'\n\t\t\tindex = filepath.parts.index('online')\n\t\t\tnew_path = Path(replace_string).joinpath(*filepath.parts\[index-1:])\n\t\t\tprint(new_path)\n\t\t\tx\[\"file\"].setValue(str(new_path))\nsymlink_selected()" +STARTLINE}
+addUserKnob {26 ""}
+}
