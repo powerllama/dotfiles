@@ -47,10 +47,12 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; Setting some options for line numbers and scrolling
 (column-number-mode)
 (global-display-line-numbers-mode t)
 (setq display-line-numbers-type 'relative)
-;(setq scroll-margin 8)
+(setq scroll-margin 8)
+(setq scroll-step 1)
 
 
 (use-package try
@@ -74,6 +76,8 @@
 	 :map ivy-reverse-i-search-map
 	 ("C-k" . ivy-previous-line)
 	 ("C-d" . ivy-reverse-i-search-kill))
+  :custom
+  (ivy-height 15)
   :config
   (ivy-mode 1))
 
@@ -82,10 +86,12 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom  (doom-modeline-height 15))
+  :custom  (doom-modeline-height 20))
 
 (use-package doom-themes
-  :init (load-theme `doom-zenburn t))
+  :config
+  (doom-themes-visual-bell-config)
+  :init (load-theme `doom-material-dark t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
