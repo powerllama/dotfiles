@@ -6,5 +6,6 @@ add_favorite_dir Nuke Nuke icon16 "[file dir $program_name]/"
 add_favorite_dir -script _project_files _project_files "" /Users/Shared/symlinks/Freshworks_post_share/online/_project_files/
 add_favorite_dir -image renders renders "" /Users/powerllama/Dropbox/Freshworks_post_share/online/renders/
 add_favorite_dir -image gfx gfx "" /Users/powerllama/Dropbox/Freshworks_post_share/online/gfx/
+add_favorite_dir -image -script "TEST project" "TEST project" "" "/Users/Shared/symlinks/fake post folder template/online/_project_files/"
 
 # End of generated file.

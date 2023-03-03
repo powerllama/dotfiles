@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><script>import nuke
+<?xml version="1.0" encoding="UTF-8"?><script>nodes = nuke.allNodes(&quot;Blur&quot;)
 
-for x in range(0,10):
-  nuke.createNode('Blur')</script><script></script>
+for node in nodes:
+    node['disable'].setValue(True)
+
+type(nodes)</script>

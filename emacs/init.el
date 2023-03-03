@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(hydra mode-line-bell evil-collection evil general all-the-icons doom-themes org-bullets try helpful counsel ivy-rich which-key rainbow-delimiters doom-modeline ivy use-package)))
+   '(evil-magit magit counsel-projectile projectile hydra mode-line-bell evil-collection evil general all-the-icons doom-themes org-bullets try helpful counsel ivy-rich which-key rainbow-delimiters doom-modeline ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,7 +49,8 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
-;(Setq display-line-numbers 'relative)
+(setq display-line-numbers-type 'relative)
+;(setq scroll-margin 8)
 
 
 (use-package try
@@ -153,6 +154,23 @@
   (evil-collection-init))
 
 (use-package hydra)
+
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/Documents/projects")
+    (setq projectile-project-search-path '("~/Documents/projects")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+(use-package magit)
 
 ;; Org-mode stuff
 (defun abrown/org-mode-setup ()
