@@ -48,12 +48,37 @@
 (setq use-package-always-ensure t)
 
 ;; Setting some options for line numbers and scrolling
-(column-number-mode)
-(global-display-line-numbers-mode t)
-(setq display-line-numbers-type 'relative)
+(setq-default display-line-numbers 'visual
+              display-line-numbers-widen t
+              ;; this is the default
+              display-line-numbers-current-absolute t)
+
+(defun noct-relative ()
+  "Show relative line numbers."
+  (setq-local display-line-numbers 'visual))
+
+(defun noct-absolute ()
+  "Show absolute line numbers."
+  (setq-local display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'noct-absolute)
+(add-hook 'evil-insert-state-exit-hook #'noct-relative)
+;; example of customizing colors
+;; (custom-set-faces '(line-number-current-line ((t :weight bold
+;;                                                  :foreground "goldenrod"
+;;                                                  :background "slate gray"))))
 (setq scroll-margin 8)
 (setq scroll-step 1)
 
+
+;; save history in minibuffers
+(setq history-length 25)
+(savehist-mode 1)
+
+(hl-line-mode 1)
+;; Revert buffers when the underlying file has changed. aka when it gets changed somewhere else
+(global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
 
 (use-package try
   :ensure t)
@@ -133,7 +158,9 @@
 
   (abrown/leader-keys
     "t" '(:ignore t :which-key "toggles")
-    "tt" '(counsel-load-theme :which-key "choose theme")))
+    "tt" '(counsel-load-theme :which-key "choose theme")
+    "f" '(:ignore t :which-key "projects")
+    "ff" '(counsel-find-file :which-key "find file")))
 
 
 (use-package evil
