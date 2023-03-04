@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-magit magit counsel-projectile projectile hydra mode-line-bell evil-collection evil general all-the-icons doom-themes org-bullets try helpful counsel ivy-rich which-key rainbow-delimiters doom-modeline ivy use-package)))
+   '(marginalia mastodon evil-magit magit counsel-projectile projectile hydra mode-line-bell evil-collection evil general all-the-icons doom-themes org-bullets try helpful counsel ivy-rich which-key rainbow-delimiters doom-modeline ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -17,6 +17,12 @@
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+;; set initial size of window
+(setq initial-frame-alist
+      (append initial-frame-alist
+              '((width . 201)
+                (height . 80))))
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
@@ -80,31 +86,66 @@
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
 
+;; Don't warn when following symlinnked files
+(setq vc-follow-symlinks t)
+
+;; tab widths
+(setq-default tab-width 2)
+(setq-default evil-shift-width tab-width)
+
+;; spaces instead of tabs for indentation
+(setq-default indent-tabs-mode nil)
+
 (use-package try
   :ensure t)
 
 (use-package mode-line-bell
   :init (mode-line-bell-mode 1))
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
+;; (use-package ivy
+;;   :diminish
+;;   :bind (("C-s" . swiper)
+;; 	 :map ivy-minibuffer-map
+;; 	 ("TAB" . ivy-alt-done)
+;; 	 ("C-l" . ivy-alt-done)
+;; 	 ("C-j" . ivy-next-line)
+;; 	 ("C-k" . ivy-previous-line)
+;; 	 :map ivy-switch-buffer-map
+;; 	 ("C-k" . ivy-previous-line)
+;; 	 ("C-l" . ivy-done)
+;; 	 ("C-d" . ivy-switch-buffer-kill)
+;; 	 :map ivy-reverse-i-search-map
+;; 	 ("C-k" . ivy-previous-line)
+;; 	 ("C-d" . ivy-reverse-i-search-kill))
+;;   :custom
+;;   (ivy-height 15)
+;;   :config
+;;   (ivy-mode 1))
+
+(use-package vertico
+  :ensure t
+  :bind (:map vertico-map
+              ("C-j" . vertico-next)
+              ("C-k" . vertico-previous)
+              ("C-f" . vertico-exit)
+              :map minibuffer-local-map
+              ("M-h" . backward-kill-word))
   :custom
-  (ivy-height 15)
-  :config
-  (ivy-mode 1))
+  (vertico-cycle t)
+  :init
+  (vertico-mode))
+
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
 
 (use-package all-the-icons)
 
@@ -128,16 +169,16 @@
   :config
   (setq which-key-idle-delay 1))
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
+;; (use-package ivy-rich
+;;   :init
+;;   (ivy-rich-mode 1))
 
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history)))
+;; (use-package counsel
+;;   :bind (("M-x" . counsel-M-x)
+;; 	 ("C-x b" . counsel-ibuffer)
+;; 	 ("C-x C-f" . counsel-find-file)
+;; 	 :map minibuffer-local-map
+;; 	 ("C-r" . 'counsel-minibuffer-history)))
 
 (use-package helpful
   :custom
@@ -158,6 +199,7 @@
 
   (abrown/leader-keys
     "t" '(:ignore t :which-key "toggles")
+    "tw" 'whitespace-mode
     "tt" '(counsel-load-theme :which-key "choose theme")
     "f" '(:ignore t :which-key "projects")
     "ff" '(counsel-find-file :which-key "find file")))
@@ -273,3 +315,12 @@
 (setq mac-command-key-is-meta t)
 (setq mac-command-modifier `meta)
 (setq mac-option-modifier nil)
+
+
+;; Mastodon?
+(use-package mastodon
+  :ensure t
+  :config
+  (mastodon-discover)
+  (setq mastodon-active-user "powerllama")
+  (setq mastodon-instance-url "https://duck.haus"))
