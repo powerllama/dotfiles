@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(marginalia mastodon evil-magit magit counsel-projectile projectile hydra mode-line-bell evil-collection evil general all-the-icons doom-themes org-bullets try helpful counsel ivy-rich which-key rainbow-delimiters doom-modeline ivy use-package)))
+   '(doom-modeline emojify visual-fill-column evil-collection orderless marginalia mastodon evil-magit magit hydra mode-line-bell evil general all-the-icons doom-themes org-bullets try helpful which-key rainbow-delimiters use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -14,6 +14,12 @@
  )
 
 (setq inhibit-startup-message t)
+
+;; macOS fixes
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier `meta)
+(setq mac-option-modifier nil)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -28,9 +34,9 @@
 (dolist (mode '(org-mode-hook
 		term-mode-hook
 		shell-mode-hook
-		eshell-mode-hook))
+		eshell-mode-hook
+    mastodon-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -73,12 +79,16 @@
 ;; (custom-set-faces '(line-number-current-line ((t :weight bold
 ;;                                                  :foreground "goldenrod"
 ;;                                                  :background "slate gray"))))
+
+;; vim-like scrolloff margin and scrolling
 (setq scroll-margin 8)
 (setq scroll-step 1)
 
+;; consolidate backups into one place instead of all over my hard drive
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 
 ;; save history in minibuffers
-(setq history-length 25)
+(setq history-length 100)
 (savehist-mode 1)
 
 (hl-line-mode 1)
@@ -89,38 +99,12 @@
 ;; Don't warn when following symlinnked files
 (setq vc-follow-symlinks t)
 
-;; tab widths
-(setq-default tab-width 2)
-(setq-default evil-shift-width tab-width)
-
 ;; spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
-
-(use-package try
-  :ensure t)
 
 (use-package mode-line-bell
   :init (mode-line-bell-mode 1))
 
-;; (use-package ivy
-;;   :diminish
-;;   :bind (("C-s" . swiper)
-;; 	 :map ivy-minibuffer-map
-;; 	 ("TAB" . ivy-alt-done)
-;; 	 ("C-l" . ivy-alt-done)
-;; 	 ("C-j" . ivy-next-line)
-;; 	 ("C-k" . ivy-previous-line)
-;; 	 :map ivy-switch-buffer-map
-;; 	 ("C-k" . ivy-previous-line)
-;; 	 ("C-l" . ivy-done)
-;; 	 ("C-d" . ivy-switch-buffer-kill)
-;; 	 :map ivy-reverse-i-search-map
-;; 	 ("C-k" . ivy-previous-line)
-;; 	 ("C-d" . ivy-reverse-i-search-kill))
-;;   :custom
-;;   (ivy-height 15)
-;;   :config
-;;   (ivy-mode 1))
 
 (use-package vertico
   :ensure t
@@ -132,32 +116,43 @@
               ("M-h" . backward-kill-word))
   :custom
   (vertico-cycle t)
+  (setq vertico-count 20)
   :init
   (vertico-mode))
 
-(use-package savehist
-  :init
-  (savehist-mode))
 
 (use-package marginalia
   :after vertico
   :ensure t
-  :custom
-  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :bind
+  ("M-A" . marginalia-cycle)
+  ;; :custom
+  ;; (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init
   (marginalia-mode))
 
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+
 (use-package all-the-icons)
+
 
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
-  :custom  (doom-modeline-height 20))
+  :custom  (doom-modeline-height 30))
+
 
 (use-package doom-themes
   :config
   (doom-themes-visual-bell-config)
   :init (load-theme `doom-material-dark t))
+
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
@@ -169,26 +164,27 @@
   :config
   (setq which-key-idle-delay 1))
 
-;; (use-package ivy-rich
-;;   :init
-;;   (ivy-rich-mode 1))
 
-;; (use-package counsel
-;;   :bind (("M-x" . counsel-M-x)
-;; 	 ("C-x b" . counsel-ibuffer)
-;; 	 ("C-x C-f" . counsel-find-file)
-;; 	 :map minibuffer-local-map
-;; 	 ("C-r" . 'counsel-minibuffer-history)))
+(use-package helpful)
+;; Note that the built-in `describe-function' includes both functions
+;; and macros. `helpful-function' is functions only, so we provide
+;; `helpful-callable' as a drop-in replacement.
+(global-set-key (kbd "C-h f") #'helpful-callable)
 
-(use-package helpful
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-h x") #'helpful-command)
+
+;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; for this in lisp modes.
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+
+;; Look up *F*unctions (excludes macros).
+;;
+;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+;; already links to the manual, if a function is referenced there.
+(global-set-key (kbd "C-h F") #'helpful-function)
+
 
 (use-package general
   :config
@@ -201,8 +197,10 @@
     "t" '(:ignore t :which-key "toggles")
     "tw" 'whitespace-mode
     "tt" '(counsel-load-theme :which-key "choose theme")
-    "f" '(:ignore t :which-key "projects")
-    "ff" '(counsel-find-file :which-key "find file")))
+    "f" '(project-find-file :which-key "find file in project")
+    "o" '(project-switch-project :which-key "find file in project")
+    ;; "ff" '(project-find-file :which-key "find file")))
+  ))
 
 
 (use-package evil
@@ -210,7 +208,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
+  (setq evil-want-C-i-jump t)
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
@@ -223,29 +221,24 @@
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
   
+
 (use-package evil-collection
   :after evil
   :config
   (evil-collection-init))
 
-(use-package hydra)
+;; disable evil in some modes
+(dolist (mode '(mastodon-mode))
+ (add-to-list 'evil-emacs-state-modes mode))
 
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (when (file-directory-p "~/Documents/projects")
-    (setq projectile-project-search-path '("~/Documents/projects")))
-  (setq projectile-switch-project-action #'projectile-dired))
 
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
+;; tab widths
+(setq-default tab-width 2)
+(setq-default evil-shift-width) 
+
 
 (use-package magit)
+
 
 ;; Org-mode stuff
 (defun abrown/org-mode-setup ()
@@ -309,18 +302,16 @@
 (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 
-
-;; macOS fixes
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier `meta)
-(setq mac-option-modifier nil)
-
-
-;; Mastodon?
+;; Mastodon
 (use-package mastodon
   :ensure t
   :config
   (mastodon-discover)
   (setq mastodon-active-user "powerllama")
   (setq mastodon-instance-url "https://duck.haus"))
+
+
+;; Emojify
+(use-package emojify
+  :hook (after-init . global-emojify-mode))
+
