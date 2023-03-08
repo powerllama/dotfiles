@@ -5,7 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(doom-modeline emojify visual-fill-column evil-collection orderless marginalia mastodon evil-magit magit hydra mode-line-bell evil general all-the-icons doom-themes org-bullets try helpful which-key rainbow-delimiters use-package)))
+   '(company-box company lsp-pyright emojify visual-fill-column evil-collection orderless marginalia evil-magit hydra mode-line-bell evil general all-the-icons doom-themes org-bullets try helpful which-key rainbow-delimiters use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -23,6 +23,20 @@
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+
+;; The default is 800 kilobytes.  Measured in bytes.
+(setq gc-cons-threshold (* 50 1000 1000))
+
+(defun efs/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                     (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
 
 ;; set initial size of window
 (setq initial-frame-alist
@@ -90,6 +104,7 @@
 ;; save history in minibuffers
 (setq history-length 100)
 (savehist-mode 1)
+(save-place-mode 1)
 
 (hl-line-mode 1)
 ;; Revert buffers when the underlying file has changed. aka when it gets changed somewhere else
@@ -196,10 +211,11 @@
   (abrown/leader-keys
     "t" '(:ignore t :which-key "toggles")
     "tw" 'whitespace-mode
-    "tt" '(counsel-load-theme :which-key "choose theme")
+    "tt" '(load-theme :which-key "choose theme")
     "f" '(project-find-file :which-key "find file in project")
     "o" '(project-switch-project :which-key "find file in project")
     ;; "ff" '(project-find-file :which-key "find file")))
+    "def" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/init.el")))
   ))
 
 
@@ -237,7 +253,8 @@
 (setq-default evil-shift-width) 
 
 
-(use-package magit)
+(use-package magit
+  :commands magit-status)
 
 
 ;; Org-mode stuff
@@ -291,20 +308,56 @@
 (defun abrown/org-mode-visual-fill ()
   (setq visual-fill-column-width 100
 	visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
+  (visual-fill-column-mode 1)
+  )
 
 (use-package visual-fill-column
   :hook (org-mode . abrown/org-mode-visual-fill))
 
-(require 'org-tempo)
+(with-eval-after-load 'org
+  (require 'org-tempo)
 
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  )
+
+;; ;; LSP stuff
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp))))  ; or lsp-deferred
+
+;; open python files in tree-sitter mode
+(add-to-list 'major-mode-remap-alist `(python-mode . python-ts-mode))
+
+(use-package eglot
+  :ensure t
+  :defer t
+  :hook (python-mode . eglot-ensure)
+  )
+
+
+(use-package company
+  :after eglot
+  :hook (eglot . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map eglot-mode-map
+              ("<tab>" . company-indent-or-complete-common))
+  :custom (company-minimum-prefix-length 2)
+          (company-idle-delay .4)
+  )
+(global-company-mode)
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 ;; Mastodon
 (use-package mastodon
   :ensure t
+  :defer t
   :config
   (mastodon-discover)
   (setq mastodon-active-user "powerllama")
@@ -315,3 +368,5 @@
 (use-package emojify
   :hook (after-init . global-emojify-mode))
 
+;; Make gc pauses faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
