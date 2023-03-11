@@ -4,8 +4,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(doom-modeline-lsp t)
  '(package-selected-packages
-   '(company-box company lsp-pyright emojify visual-fill-column evil-collection orderless marginalia evil-magit hydra mode-line-bell evil general all-the-icons doom-themes org-bullets try helpful which-key rainbow-delimiters use-package)))
+   '(corfu company-box company emojify visual-fill-column orderless marginalia evil-magit mode-line-bell evil all-the-icons doom-themes org-bullets helpful which-key rainbow-delimiters use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -13,7 +14,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-(setq inhibit-startup-message t)
+;; (setq inhibit-startup-message t)
 
 ;; macOS fixes
 (setq mac-option-key-is-meta nil)
@@ -38,11 +39,11 @@
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
 
 
-;; set initial size of window
-(setq initial-frame-alist
-      (append initial-frame-alist
-              '((width . 201)
-                (height . 80))))
+;; ;; set initial size of window
+;; (setq initial-frame-alist
+;;       (append initial-frame-alist
+;;               '((width . 201)
+;;                 (height . 80))))
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
@@ -56,11 +57,16 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; Initiliaze package sources
-(require 'package)
+(setq-default
+ package-native-compile t
+ use-package-always-defer t
+ use-package-always-ensure t)
 
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+(require 'package)
+(require 'use-package)
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") 'append)
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/package/")'append)
 
 (package-initialize)
 (unless package-archive-contents
@@ -70,8 +76,6 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
 
 ;; Setting some options for line numbers and scrolling
 (setq-default display-line-numbers 'visual
@@ -99,7 +103,17 @@
 (setq scroll-step 1)
 
 ;; consolidate backups into one place instead of all over my hard drive
-(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+   `(("." . ,(concat user-emacs-directory "backups")))
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+
+;; when auto-saving, just save the file itself. don't make a new file
+(setq auto-save-visited-mode t)
 
 ;; save history in minibuffers
 (setq history-length 100)
@@ -122,7 +136,6 @@
 
 
 (use-package vertico
-  :ensure t
   :bind (:map vertico-map
               ("C-j" . vertico-next)
               ("C-k" . vertico-previous)
@@ -138,7 +151,6 @@
 
 (use-package marginalia
   :after vertico
-  :ensure t
   :bind
   ("M-A" . marginalia-cycle)
   ;; :custom
@@ -148,7 +160,6 @@
 
 
 (use-package orderless
-  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
@@ -158,9 +169,10 @@
 
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
-  :custom  (doom-modeline-height 30))
+  :custom
+  (doom-modeline-height 30)
+  )
 
 
 (use-package doom-themes
@@ -303,7 +315,8 @@
 
 (use-package org-bullets
   :after org
-  :hook (org-mode . org-bullets-mode))
+  :hook (org-mode . org-bullets-mode)
+  )
 
 (defun abrown/org-mode-visual-fill ()
   (setq visual-fill-column-width 100
@@ -312,7 +325,10 @@
   )
 
 (use-package visual-fill-column
-  :hook (org-mode . abrown/org-mode-visual-fill))
+  :hook
+  (org-mode . abrown/org-mode-visual-fill)
+  (mastodon-mode . abrown/org-mode-visual-fill)
+  )
 
 (with-eval-after-load 'org
   (require 'org-tempo)
@@ -333,31 +349,38 @@
 (add-to-list 'major-mode-remap-alist `(python-mode . python-ts-mode))
 
 (use-package eglot
-  :ensure t
-  :defer t
-  :hook (python-mode . eglot-ensure)
+  :hook (python-ts-mode . eglot-ensure)
   )
 
 
-(use-package company
-  :after eglot
-  :hook (eglot . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map eglot-mode-map
-              ("<tab>" . company-indent-or-complete-common))
-  :custom (company-minimum-prefix-length 2)
-          (company-idle-delay .4)
-  )
-(global-company-mode)
+;; (use-package company
+;;   :after eglot
+;;   :hook (eglot . company-mode)
+;;   :bind (:map company-active-map
+;;          ("<tab>" . company-complete-selection))
+;;         (:map eglot-mode-map
+;;               ("<tab>" . company-indent-or-complete-common))
+;;   :custom (company-minimum-prefix-length 2)
+;;           (company-idle-delay .4)
+;;   )
+;; (global-company-mode)
 
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+;; (use-package company-box
+;;   :hook (company-mode . company-box-mode))
+
+(use-package corfu
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  :hook (prog-mode . corfu-mode)
+  :init
+  (global-corfu-mode)
+  )
+
+(setq completion-category-overrides '((eglot (styles orderless))))
 
 ;; Mastodon
 (use-package mastodon
-  :ensure t
-  :defer t
   :config
   (mastodon-discover)
   (setq mastodon-active-user "powerllama")
@@ -369,4 +392,4 @@
   :hook (after-init . global-emojify-mode))
 
 ;; Make gc pauses faster by decreasing the threshold.
-(setq gc-cons-threshold (* 2 1000 1000))
+(setq gc-cons-threshold (* 8 1024 1024))
