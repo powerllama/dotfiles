@@ -14,8 +14,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; (setq inhibit-startup-message t)
-
 ;; macOS fixes
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
@@ -37,13 +35,6 @@
            gcs-done))
 
 (add-hook 'emacs-startup-hook #'efs/display-startup-time)
-
-
-;; ;; set initial size of window
-;; (setq initial-frame-alist
-;;       (append initial-frame-alist
-;;               '((width . 201)
-;;                 (height . 80))))
 
 ;; Disable line numbers for some modes
 (dolist (mode '(org-mode-hook
@@ -130,6 +121,13 @@
 
 ;; spaces instead of tabs for indentation
 (setq-default indent-tabs-mode nil)
+
+(use-package paren
+  :ensure nil
+  :init
+  (setq show-paren-delay 0)
+  :config
+  (show-paren-mode +1))
 
 (use-package mode-line-bell
   :init (mode-line-bell-mode 1))
@@ -262,8 +260,9 @@
 
 ;; tab widths
 (setq-default tab-width 2)
-(setq-default evil-shift-width) 
+(setq-default evil-shift-width 2)
 
+(use-package goto-chg)
 
 (use-package magit
   :commands magit-status)
@@ -339,34 +338,12 @@
   )
 
 ;; ;; LSP stuff
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-pyright)
-;;                           (lsp))))  ; or lsp-deferred
-
 ;; open python files in tree-sitter mode
 (add-to-list 'major-mode-remap-alist `(python-mode . python-ts-mode))
 
 (use-package eglot
   :hook (python-ts-mode . eglot-ensure)
   )
-
-
-;; (use-package company
-;;   :after eglot
-;;   :hook (eglot . company-mode)
-;;   :bind (:map company-active-map
-;;          ("<tab>" . company-complete-selection))
-;;         (:map eglot-mode-map
-;;               ("<tab>" . company-indent-or-complete-common))
-;;   :custom (company-minimum-prefix-length 2)
-;;           (company-idle-delay .4)
-;;   )
-;; (global-company-mode)
-
-;; (use-package company-box
-;;   :hook (company-mode . company-box-mode))
 
 (use-package corfu
   :custom
