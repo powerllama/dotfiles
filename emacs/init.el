@@ -4,9 +4,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "631c52620e2953e744f2b56d102eae503017047fb43d65ce028e88ef5846ea3b" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" default))
  '(doom-modeline-lsp t)
  '(package-selected-packages
-   '(corfu company-box company emojify visual-fill-column orderless marginalia evil-magit mode-line-bell evil all-the-icons doom-themes org-bullets helpful which-key rainbow-delimiters use-package)))
+   '(solaire solaire-mode treemacs-evil treemacs highlight-parentheses corfu company emojify visual-fill-column orderless marginalia evil-magit mode-line-bell evil all-the-icons doom-themes org-bullets helpful which-key rainbow-delimiters use-package))
+ '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -41,7 +44,8 @@
 		term-mode-hook
 		shell-mode-hook
 		eshell-mode-hook
-    mastodon-mode-hook))
+    mastodon-mode-hook
+    treemacs-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Make ESC quit prompts
@@ -68,7 +72,7 @@
   (package-install 'use-package))
 
 
-;; Setting some options for line numbers and scrolling
+;; Setting some options for line numbers and setq
 (setq-default display-line-numbers 'visual
               display-line-numbers-widen t
               ;; this is the default
@@ -125,9 +129,16 @@
 (use-package paren
   :ensure nil
   :init
-  (setq show-paren-delay 0)
+  (show-paren-mode +1)
   :config
-  (show-paren-mode +1))
+  (setq show-paren-delay 0))
+
+;; (use-package highlight-parentheses
+;;   :init
+;;   (highlight-parentheses-mode)
+;;   :config
+;;   (setq highlight-parentheses-delay 0)
+;;   )
 
 (use-package mode-line-bell
   :init (mode-line-bell-mode 1))
@@ -167,16 +178,22 @@
 
 
 (use-package doom-modeline
-  :init (doom-modeline-mode 1)
   :custom
   (doom-modeline-height 30)
+  (setq doom-modeline-time t)
+  (setq doom-modeline-battery t)
+  (setq doom-modeline-minor-modes t)
+  :init (doom-modeline-mode 1)
   )
 
 
 (use-package doom-themes
   :config
   (doom-themes-visual-bell-config)
-  :init (load-theme `doom-material-dark t))
+  :init (load-theme 'doom-material-dark t))
+
+(solaire-global-mode +1)
+(add-to-list 'solaire-mode-themes-to-face-swap 'doom-material-dark)
 
 
 (use-package rainbow-delimiters
@@ -257,6 +274,14 @@
 (dolist (mode '(mastodon-mode))
  (add-to-list 'evil-emacs-state-modes mode))
 
+(defun my-center-line (&rest _)
+  (evil-scroll-line-to-center nil))
+
+(dolist (evil-functions '(evil-scroll-up
+                          evil-scroll-down
+                          evil-search-next
+                          evil-search-previous))
+  (advice-add evil-functions :after #'my-center-line))
 
 ;; tab widths
 (setq-default tab-width 2)
@@ -354,6 +379,9 @@
   (global-corfu-mode)
   )
 
+(use-package treemacs)
+(use-package treemacs-evil)
+
 (setq completion-category-overrides '((eglot (styles orderless))))
 
 ;; Mastodon
@@ -363,6 +391,7 @@
   (setq mastodon-active-user "powerllama")
   (setq mastodon-instance-url "https://duck.haus"))
 
+(set-face-attribute 'show-paren-match nil :background "gray")
 
 ;; Emojify
 (use-package emojify
