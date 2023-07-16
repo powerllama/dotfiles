@@ -13,3 +13,7 @@ nuke/OCIOConfig
 *~
 [#]*[#]
 .\#*
+# compiled emacs init
+emacs/init.elc
+# vscode project settings
+.vscode
