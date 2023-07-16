@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><script>nodes = nuke.allNodes(&quot;Blur&quot;)
-
-for node in nodes:
-    node['disable'].setValue(True)
-
-type(nodes)</script>

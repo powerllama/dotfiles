@@ -5,10 +5,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "631c52620e2953e744f2b56d102eae503017047fb43d65ce028e88ef5846ea3b" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" default))
+   '("b64a60e69617b4348d0402fad2f0d08a694301132e7ab243dab4d6a65c3bf948" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "631c52620e2953e744f2b56d102eae503017047fb43d65ce028e88ef5846ea3b" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" default))
  '(doom-modeline-lsp t)
  '(package-selected-packages
-   '(solaire solaire-mode treemacs-evil treemacs highlight-parentheses corfu company emojify visual-fill-column orderless marginalia evil-magit mode-line-bell evil all-the-icons doom-themes org-bullets helpful which-key rainbow-delimiters use-package))
+   '(ef-themes solaire solaire-mode highlight-parentheses emojify visual-fill-column orderless evil-magit mode-line-bell doom-themes org-bullets rainbow-delimiters use-package))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -45,7 +45,8 @@
 		shell-mode-hook
 		eshell-mode-hook
     mastodon-mode-hook
-    treemacs-mode-hook))
+    treemacs-mode-hook
+    erc-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Make ESC quit prompts
@@ -366,9 +367,9 @@
 ;; open python files in tree-sitter mode
 (add-to-list 'major-mode-remap-alist `(python-mode . python-ts-mode))
 
-(use-package eglot
-  :hook (python-ts-mode . eglot-ensure)
-  )
+;; (use-package eglot
+;;   :hook (python-ts-mode . eglot-ensure)
+;;   )
 
 (use-package corfu
   :custom
@@ -391,7 +392,7 @@
   (setq mastodon-active-user "powerllama")
   (setq mastodon-instance-url "https://duck.haus"))
 
-(set-face-attribute 'show-paren-match nil :background "gray")
+;; (set-face-attribute 'show-paren-match nil :background "gray")
 
 ;; Emojify
 (use-package emojify
@@ -399,3 +400,8 @@
 
 ;; Make gc pauses faster by decreasing the threshold.
 (setq gc-cons-threshold (* 8 1024 1024))
+
+;; (use-package ef-themes)
+;; (load-theme 'ef-autumn :no-confirm)
+
+(add-to-list 'default-frame-alist '(alpha-background . 0.1))
