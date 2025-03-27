@@ -18,3 +18,6 @@ nuke/OCIOConfig
 emacs/init.elc
 # vscode project settings
 .vscode
+nuke/Cattery/
+nuke/TaskPresets/14.0/
+nuke/TaskPresets/15.0/
