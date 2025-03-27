@@ -1,0 +1,45 @@
+set cut_paste_input [stack 0]
+version 15.1 v4
+push $cut_paste_input
+Write {
+ channels rgba
+ file "\[value do_not_modify]"
+ file_type mov
+ mov64_format "mov (QuickTime / MOV)"
+ mov64_codec appr
+ mov_prores_codec_profile "ProRes 4:4:4:4 12-bit"
+ mov_h264_codec_profile "High 4:2:0 8-bit"
+ mov64_pixel_format {{0}}
+ mov64_quality High
+ mov64_fast_start true
+ mov64_write_timecode true
+ mov64_gop_size 12
+ mov64_b_frames 0
+ mov64_bitrate 20000
+ mov64_bitrate_tolerance 4000000
+ mov64_quality_min 1
+ mov64_quality_max 3
+ colorspace "Input - ARRI - V3 LogC (EI800) - Wide Gamut"
+ create_directories true
+ checkHashOnRead false
+ version 36
+ ocioColorspace scene_linear
+ display "sRGB - Display"
+ view "ACES 1.0 - SDR Video"
+ beforeRender write2.main()
+ name Write_Sandwich
+ label "\[value do_not_modify]"
+ selected true
+ xpos -305
+ ypos 89
+ addUserKnob {20 render_settings l "Render Settings"}
+ addUserKnob {68 render_type l "Render Type" t "Use main for rendering the comp itself.\n\nUse precomp (plate name) if you want to precomp something like a denoise or undistort that should be named with the plate name (in case there are multiple plates)\n\nUse precomp (comp name) if you're precomping an element of the comp itself." M {"main (final)" "main (review)" "precomp (plate name)" "precomp (comp name)" "" "" ""}}
+ addUserKnob {1 task l "Precomp Task"}
+ task precomp
+ addUserKnob {1 do_not_modify l "Generated File Path" t "do not modify"}
+ addUserKnob {22 set_mov_final_defaults l "Set QT Final Defaults" T "this_write = nuke.thisNode()\nthis_write\['file_type'].setValue('mov')\nthis_write\['mov64_codec'].setValue('appr')\nthis_write\['mov64_format'].setValue('mov (QuickTime / MOV)')\nthis_write\['mov_prores_codec_profile'].setValue('ProRes 4:4:4:4 12-bit')\nthis_write\['transformType'].setValue('colorspace')" +STARTLINE}
+ addUserKnob {22 set_mov_review_defaults l "Set QT Review Defaults" -STARTLINE T "this_write = nuke.thisNode()\nthis_write\['file_type'].setValue('mov')\nthis_write\['mov64_codec'].setValue('appr')\nthis_write\['mov64_format'].setValue('mov (QuickTime / MOV)')\nthis_write\['mov_prores_codec_profile'].setValue('ProRes 4:2:2 Proxy 10-bit')\nthis_write\['transformType'].setValue('display')"}
+ addUserKnob {22 set_exr_defaults l "Set EXR Precomp Defaults" -STARTLINE T "this_write = nuke.thisNode()\nthis_write\['file_type'].setValue('exr')\nthis_write\['datatype'].setValue('16 bit half')\nthis_write\['compression'].setValue('none')\nthis_write\['transformType'].setValue('colorspace')"}
+ addUserKnob {26 ""}
+ addUserKnob {22 Render_1 l Render T nuke.thisNode().knob('Render').execute() +STARTLINE}
+}

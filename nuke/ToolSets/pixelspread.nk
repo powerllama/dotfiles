@@ -1,0 +1,297 @@
+set cut_paste_input [stack 0]
+version 15.0 v3
+push 0
+push $cut_paste_input
+Group {
+inputs 2
+name PIXELSPREAD1
+tile_color 0xff6c09ff
+note_font "DejaVu Sans"
+note_font_size 15
+note_font_color 0xffffffff
+selected true
+xpos 1835
+ypos -924
+addUserKnob {20 User l "Pixel Spread"}
+addUserKnob {4 type l "Spread Type" M {WarpUV}}
+addUserKnob {7 spread l "Spread Amout" R 0 10}
+spread 12.45
+addUserKnob {7 insideMatte l "Inside Matte" R 1 10}
+insideMatte 13.3
+addUserKnob {41 filter T STMap1.filter}
+addUserKnob {26 ""}
+addUserKnob {41 maskChannelMask l "Spread Mask" -STARTLINE T BlurUV.maskChannelMask}
+addUserKnob {26 ""}
+addUserKnob {6 premult l Premultiply +STARTLINE}
+}
+Input {
+inputs 0
+name Matte
+xpos -461
+ypos 390
+number 1
+}
+Dot {
+name Dot2
+xpos -427
+ypos 494
+}
+Shuffle {
+red alpha
+green alpha
+blue alpha
+name Shuffle1
+xpos -461
+ypos 640
+}
+set N39a84800 [stack 0]
+Dot {
+name Dot3
+xpos -427
+ypos 697
+}
+set N39a84c00 [stack 0]
+Dot {
+name Dot11
+xpos -427
+ypos 1245
+}
+push $N39a84c00
+Input {
+inputs 0
+name Color
+xpos -696
+ypos 386
+}
+Dot {
+name Dot1
+xpos -662
+ypos 491
+}
+set N39a85800 [stack 0]
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy3
+xpos -696
+ypos 687
+}
+set N39a85c00 [stack 0]
+Dot {
+name Dot5
+xpos -521
+ypos 740
+}
+FilterErode {
+size {{parent.insideMatte}}
+name FilterErode2
+xpos -563
+ypos 771
+}
+FilterErode {
+size {{parent.FilterErode2.size}}
+filter gaussian
+name FilterErode1
+xpos -555
+ypos 834
+}
+Premult {
+name Premult1
+xpos -555
+ypos 885
+}
+Dot {
+name Dot9
+xpos -521
+ypos 1104
+}
+push $N39a85c00
+Dot {
+name Dot10
+xpos -1088
+ypos 1068
+hide_input true
+}
+set Nd2ef3400 [stack 0]
+Input {
+inputs 0
+name SpreadMask
+xpos -1122
+ypos 384
+number 2
+}
+Dot {
+name Dot7
+xpos -1088
+ypos 495
+}
+Dot {
+name Dot4
+xpos -1088
+ypos 816
+}
+push $N39a84800
+push $N39a85800
+Shuffle {
+red black
+green black
+blue black
+alpha black
+name Shuffle2
+xpos -978
+ypos 487
+}
+Ramp {
+output {-rgba.red rgba.green -rgba.blue -rgba.alpha}
+p0 {0 0}
+p1 {0 {input.height}}
+name Y
+xpos -978
+ypos 544
+}
+Ramp {
+output {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+p0 {0 0}
+p1 {{input.width} 0}
+name X
+xpos -978
+ypos 570
+}
+Copy {
+inputs 2
+from0 rgba.red
+to0 rgba.alpha
+name Copy2
+xpos -978
+ypos 634
+}
+Premult {
+name Premult2
+xpos -978
+ypos 738
+}
+Blur {
+inputs 1+1
+channels rgba
+size {{parent.spread}}
+maskChannelInput -rgba.alpha
+name BlurUV
+xpos -978
+ypos 812
+}
+Unpremult {
+name Unpremult1
+xpos -978
+ypos 838
+}
+set N247b3c00 [stack 0]
+push $N39a84800
+Dot {
+name Dot6
+xpos -1088
+ypos 899
+hide_input true
+}
+STMap {
+inputs 2
+channels rgb
+uv rgb
+blur_scale 0
+name STMap2
+xpos -978
+ypos 895
+}
+push $N247b3c00
+push $N39a85c00
+STMap {
+inputs 2
+channels rgb
+uv rgb
+blur_scale 0
+filter Mitchell
+name STMap1
+xpos -696
+ypos 838
+}
+set Nfe3b4800 [stack 0]
+Dot {
+name Dot8
+xpos -800
+ypos 931
+}
+Copy {
+inputs 2
+from0 rgba.red
+to0 rgba.alpha
+name Copy1
+xpos -978
+ypos 921
+}
+Dilate {
+channels alpha
+size -1
+name Dilate1
+xpos -978
+ypos 959
+}
+Premult {
+name Premult4
+xpos -978
+ypos 1017
+}
+push $Nd2ef3400
+Merge2 {
+inputs 2
+name Merge2
+xpos -978
+ypos 1064
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy4
+xpos -978
+ypos 1105
+}
+push $Nfe3b4800
+Premult {
+name Premult3
+xpos -696
+ypos 923
+}
+Switch {
+inputs 2
+which {{1-parent.premult}}
+name Switch1
+xpos -696
+ypos 1111
+}
+Merge2 {
+inputs 2
+name Merge1
+xpos -696
+ypos 1177
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy5
+xpos -696
+ypos 1235
+}
+Output {
+name Output1
+xpos -696
+ypos 1311
+}
+Viewer {
+frame_range 1-60
+rgb_only true
+name Viewer1
+xpos -868
+ypos 838
+}
+end_group

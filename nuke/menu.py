@@ -125,27 +125,21 @@ abMenu.addCommand('Utility/Move Right','moveNodesRight()','ctrl+alt+right')
 
 
 
-# Add python
-# BackdropPro
-import labelAutobackdrop
 abMenu.addCommand('Shortcut/Auto Backdrop', 'labelAutobackdrop.autoBackdrop()', 'Shift+b')
-
-import contactSheets
 abMenu.addCommand('Utility/AOV Contact Sheet', 'contactSheets.main()')
-
-
-import splitLayers
 abMenu.addCommand('Utility/splitLayers', 'splitLayers.main()')
-
+abMenu.addCommand('DespillMadness', 'nuke.createNode("DespillMadness.gizmo")')
+abMenu.addCommand('Roto from matchmove', 'roto_from_tracker.main()')
 # W_ScaleTree
 import W_scaleTree
 abMenu.addCommand('Utility/Node/W_scaleTree', 'W_scaleTree.scaleTreeFloatingPanel()', 'alt+`')
 
+# Despill madness
 # W_hotbox
 import W_hotbox, W_hotboxManager
 
 # KnobScripter
-import KnobScripter
+# import KnobScripter
 
 # channel_hotbox
 import channel_hotbox
@@ -154,4 +148,7 @@ abMenu.addCommand('Channel HotBox', 'channel_hotbox.start()', 'alt+q')
 # firefly killer
 abMenu.addCommand('Firefly Killer', 'addGroupTool("FireflyKiller.gizmo")')
 
-import NukeServerSocket
+# transform dissolve
+abMenu.addCommand('Transform dissolve', 'nuke.createNode("TransformDissolve.gizmo")')
+# import NukeServerSocket
+
