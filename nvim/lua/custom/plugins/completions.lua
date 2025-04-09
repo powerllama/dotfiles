@@ -19,15 +19,15 @@ return {
       -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
       -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
       -- See the full "keymap" documentation for information on defining your own keymap.
-      keymap = { preset = 'default' },
+      keymap = { preset = 'enter' },
 
       -- can't figure out how to make this work while still showing the blink menu
-      -- completion = {
-      --   menu = {
-      --     auto_show = false,
-      --   },
-      --   ghost_text = { enabled = true },
-      -- },
+      completion = {
+        menu = {
+          auto_show = false,
+        },
+        -- ghost_text = { enabled = true },
+      },
 
       appearance = {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
