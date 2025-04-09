@@ -10,6 +10,7 @@ return {
       integrations = {
         blink_cmp = true,
         cmp = true,
+        gitsigns = false,
         neotree = {
           enabled = true,
           show_root = true,
