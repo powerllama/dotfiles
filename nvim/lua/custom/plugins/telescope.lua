@@ -11,7 +11,7 @@ return {
       require('telescope').setup {
         pickers = {
           find_files = {
-            theme = "ivy"
+            -- theme = "ivy"
           }
         },
         extensions = {
@@ -22,8 +22,9 @@ return {
       require('telescope').load_extension('fzf')
 
       local builtin = require 'telescope.builtin'
-      vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = '[F]ind [H]elp tags' })
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = '[F]ind [F]iles' })
+      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = '[S]earch [H]elp tags' })
+      vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = 'search grep' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set("n", "<leader>en", function()
           builtin.find_files {
